@@ -1,0 +1,47 @@
+.our-rooms-icon figure i
+{
+	background-color: #f6ae00;
+    color: white;
+    font-size: 19px;
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+
+
+.details-wrapper.clearfix
+{
+	min-height: 0px !important;
+    padding-right: 0px !important;
+    margin-bottom: 40px !important;
+
+}
+
+.details2-info
+{
+	padding-top: 0px !important;
+}
+
+.check1
+{
+    font-size: 1em !important;
+}
+
+.div-shared-friends
+{
+    font-size: 12px;
+}
+
+
+@media (max-width: 767px) 
+{    
+
+    .div-icons-share
+    {
+        justify-content: center;
+    }
+
+    .details2-link
+    {
+     width: 100%;
+    }
+}

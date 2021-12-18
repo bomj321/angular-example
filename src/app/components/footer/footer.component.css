@@ -1,0 +1,38 @@
+.img-footer-api
+{
+	width: 70px !important;
+    height: 70px !important;
+}
+
+.bot2-wrapper 
+{
+    background: #212121;
+}
+
+.bot2 
+{
+    border-top: 1px solid #212121 !important;
+    border-bottom: 1px solid #212121 !important;
+}
+
+.custom-link-footer
+{
+	color: white;
+	border: 1px solid white;
+}
+
+@media (min-width: 768px) {
+    .paragraph-description
+    {
+        width: 700px;
+        margin: auto;
+    } 
+}
+
+@media (max-width: 576px) {
+    .contact1
+    {
+        font-size: 12px;
+    } 
+}
+

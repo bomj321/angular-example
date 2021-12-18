@@ -1,0 +1,22 @@
+.txt3 {
+  height: 88px;
+  overflow: hidden;
+  text-overflow: ellipsis !important;
+
+}
+
+.figure-img img {
+  height: 220px;
+}
+
+.caption
+{
+    min-height: 231px;
+}
+
+
+@media (max-width: 991px) {
+  .figure-img img {
+    height: auto;
+  }
+}

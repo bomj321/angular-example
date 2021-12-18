@@ -1,0 +1,104 @@
+<div class="not-front page-reservation" *ngIf="bestDestinationsAvailables && establismentInformation">
+
+    <div id="main">
+        <app-search-wrapper [establismentInformation]="establismentInformation"></app-search-wrapper>
+
+
+        <app-top-wrapper-home [establismentInformation]="establismentInformation"></app-top-wrapper-home>
+
+
+        <div class="breadcrumbs1_wrapper mt-3">
+
+            <div class="container">
+                <div class="breadcrumbs1"><a
+                    [routerLink]="'/' + establismentInformation.token">{{ 'DESTINATIONS.HOME' | translate }}</a><span>|</span>{{ 'DESTINATIONS.OUR_RESERVARTIONS' | translate }}
+                </div>
+            </div>
+        </div>
+        <div id="content">
+            <div class="container">
+
+                <div class="title1">{{ 'DESTINATIONS.DESTINATIONS' | translate }}</div>
+
+                <div class="booking2-wrapper horizontal">
+                    <app-bar-search [establismentInformation]="establismentInformation"></app-bar-search>
+                </div>
+
+                <ng-container *ngIf="bestDestinationsAvailables?.length > 0">
+                    <div class="pane1 clearfix">
+
+                        <div class="showing-results">{{ 'DESTINATIONS.RESULTS' | translate }}
+                            {{ ((page-1) * pageSize)+1 }}-{{ (page-1) * pageSize + pageSize }}
+                            <span>{{ 'DESTINATIONS.OF' | translate }} {{ bestDestinationsAvailables.length }}</span>
+                        </div>
+
+                    </div>
+
+                    <div id="second-tab-group" class="tabgroup">
+
+                        <div id="tabs2-2">
+
+                            <div class="room-wide-wrapper"
+                                *ngFor="let bestDestinationAvailable of bestDestinationsAvailables | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                                <div class="room-wide-inner">
+                                    <div class="room-wide clearfix">
+                                        <figure>
+                                            <img src="{{ server + bestDestinationAvailable.urlImage }}"
+                                                alt="Imagen del destino" class="img-fluid img-destiny">
+                                        </figure>
+                                        <div class="caption">
+                                            <div class="room-wide-columns clearfix">
+                                                <div class="room-wide-left w-100">
+                                                    <div class="txt2">{{ bestDestinationAvailable.name }}</div>
+                                                </div>
+
+                                            </div>
+                                            <div class="txt5" [innerHTML]="bestDestinationAvailable.description"></div>
+
+
+                                            <div class="room-wide-columns clearfix">
+
+                                                <div class="room-wide-right">
+                                                    <div class="txt9">
+                                                        <a
+                                                            [routerLink]="[ establismentInformation + '/destino', bestDestinationAvailable.destinationId, bestDestinationAvailable.hashtag]">
+                                                            <span>
+                                                                {{ 'DESTINATIONS.DETAILS' | translate }}
+                                                            </span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <ngb-pagination [(page)]="page" [pageSize]="pageSize"
+                                [collectionSize]="bestDestinationsAvailables.length">
+
+                            </ngb-pagination>
+
+
+
+                        </div>
+                    </div>
+
+                </ng-container>
+
+                <ng-container *ngIf="bestDestinationsAvailables?.length == 0">             
+                    <div class="text-center div-link">
+                        <a [routerLink]="'/'+establismentInformation.token" class="p-3">No hay destinos diponibles</a>
+                    </div>
+                   
+                </ng-container>
+
+
+            </div>
+        </div>
+
+        <app-footer [establismentInformation]="establismentInformation"></app-footer>
+
+
+    </div>
+</div>

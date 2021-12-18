@@ -1,0 +1,141 @@
+<div class="not-front page-details" *ngIf="establismentInformation">
+  <div id="main">
+
+    <app-search-wrapper [establismentInformation]="establismentInformation"></app-search-wrapper>
+
+
+    <app-top-wrapper-home [establismentInformation]="establismentInformation"></app-top-wrapper-home>
+
+    <div class="breadcrumbs1_wrapper mt-1">
+      <div class="container">
+
+
+        <div class="breadcrumbs1"><a
+            [routerLink]="'/' + establismentInformation.token + '/our-rooms'">{{ 'DETAILROOMS.OUR_ROOMS' | translate }}</a><span>|</span>{{ 'DETAILROOMS.DETAILS' | translate }}
+        </div>
+      </div>
+    </div>
+    <div id="content" *ngIf="informationOurRoom">
+      <div class="container">
+
+        <div class="booking2-wrapper horizontal">
+          <app-bar-search [establismentInformation]="establismentInformation"></app-bar-search>
+        </div>
+
+        <ng-container *ngIf="galleryImages?.length > 0">
+          <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+
+        </ng-container>
+
+
+        <div class="details-wrapper clearfix mt-3">
+          <div class="txt2">{{ 'DETAILROOMS.ACCOMMODATION' | translate }}
+            {{ informationOurRoom.roomTypeDetail.roomType.name | uppercase  }}</div>
+          <div class="txt3">
+            <div
+              [innerHtml]="informationOurRoom.roomTypeDetail.roomType.description + informationOurRoom.roomTypeDetail.roomType.equipment">
+            </div>
+
+            <ng-container *ngFor="let feature of informationOurRoom.roomTypeDetail.features">
+
+              <p [ngClass]="{ 'box-shadow-custom' : feature.background && feature.background != '' }"
+                class="paragraph-featured border-radius-custom" [style.background-color]="feature.background"
+                [style.color]="feature.color" (click)="openLink(feature.link)" style="display: inline-block;">
+
+                <i [class]="feature.icon + ' mr-1'"></i>
+                {{ feature.title }}: {{ feature.description }}
+
+                <ng-container
+                  *ngIf="feature.link && feature.link.split('//')[1] != '' && feature.link.split('//')[1] != undefined && feature.link.split('//')[1] != null">
+
+                  <i ngbTooltip="Ir a link" style="cursor: pointer;" class="ml-1 fa fa-external-link" aria-hidden="true"
+                    (click)="openLink(feature.link)"></i>
+
+                </ng-container>
+
+              </p>
+            </ng-container>
+
+            <br>
+
+            <span *ngIf="informationOurRoom.pricePerNight.iva == 0" class="badge text-white badge-CC0000">
+              Excluido de IVA
+            </span>
+
+            <span class="badge text-white badge-FF8800" *ngIf="informationOurRoom.pricePerNight.iva != 0">
+              Con impuestos incluídos
+            </span>
+
+
+          </div>
+
+        </div>
+
+        <div>
+          <div class="row">
+            <div class="col-12">
+              <div class="our-rooms-icons">
+
+                <div class="row mb-4">
+                  <div class="col-lg-3 col-md-4 col-sm-6 col-6 text-center"
+                    *ngFor="let item of informationOurRoom.roomTypeDetail.items">
+
+                    <i class="{{ item.icon }} fa-2x" aria-hidden="true"></i>
+                    <p>{{ item.title }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 d-flex align-items-center div-icons-share">
+              <div class="clearfix div-shared-friends" *ngIf="informationHotelCarrusel?.socialNetworks.length > 0">
+                <div class="share-to-friends clearfix">
+                  <div class="share-to-friends-txt">{{ 'DETAILROOMS.SHARE_FRIENDS' | translate }}:
+                  </div>
+                  <div class="share-to-friends-icons">
+                    <ul class="social4 clearfix">
+                      <li *ngFor="let socialNetwork of informationHotelCarrusel.socialNetworks">
+                        <a target="_blank" href="{{ socialNetwork.url }}"><i
+                            class="fa fa-{{ socialNetwork.name }}"></i></a>
+                      </li>
+
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+              <div class="details2-info">
+                <div>
+                  <a class="details2-link btn-reservations" style="color: white; cursor: pointer;"
+                    (click)="setRoom(informationOurRoom)">
+                    <div class="txt1">
+                      ${{ Math.ceil(informationOurRoom.pricePerNight.pricePerNightWithoutIva) | number:'':'es' }}
+                      <span>{{ 'DETAILROOMS.TOTAL' | translate }}</span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!--<div id="google_map"></div>-->
+
+
+
+      </div>
+    </div>
+
+    <app-footer [establismentInformation]="establismentInformation"></app-footer>
+
+
+  </div>
+</div>
+
+<ngx-loading [show]="loading" [config]="{fullScreenBackdrop: true }"></ngx-loading>

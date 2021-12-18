@@ -1,0 +1,17 @@
+<div class="txt5" *ngIf="!extendsOptions">
+	<div class="full-text mb-1 text-left" [hidden]="fullText" [innerHTML]="rmTextShort"></div>
+
+	<div class="full-text mb-1 text-left" [hidden]="!fullText" [innerHTML]="rmTextFull"></div>
+
+	<p class="link-read-more mb-1 text-left">
+		<a href="javascript:;" [class]="classNames" (click)="readMore(true)" [hidden]="!showMore">{{more}}</a>
+		<a href="javascript:;" (click)="readMore(false)" [class]="classNames" [hidden]="!showLess">{{less}}</a>
+	</p>
+
+</div>
+
+
+<div class="txt3" *ngIf="extendsOptions">
+	<div class="full-text mb-1 text-left"  [innerHTML]="rmTextShort"></div>
+</div>
+

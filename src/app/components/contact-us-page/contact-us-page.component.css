@@ -1,0 +1,49 @@
+.txt1-custom
+{
+	font-size: 16px !important
+}
+
+.txt2-custom
+{
+	font-size: 22px !important
+}
+
+.txt4-custom
+{
+	font-size: 18px !important
+}
+
+.dl1-custom
+{
+	font-size: 13px !important;
+}
+
+.contact-location
+{
+	z-index: 9999 !important;
+}
+
+.txt1-custom
+{
+	text-decoration: none;
+}
+
+.dl1-custom a
+{
+	text-decoration: none !important;
+	color: black;
+}
+
+
+@media (min-width: 768px) 
+{  
+	.dl1 dd 
+	{
+		margin-left: 8rem;
+	}	
+}
+
+#map {
+	width: 100%;
+	height: 350px;
+  }

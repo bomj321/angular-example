@@ -1,0 +1,81 @@
+<div class="modal-header bg-orange">
+  <h5 class="modal-title text-white font-weight-bold"> {{ promotion.agreement.title }}</h5>
+</div>
+
+<div class="modal-body">
+
+
+  <div class="container">
+    <div class="row row-tab">
+
+
+      <ngb-tabset #t="ngbTabset">
+        <ngb-tab id="tab-selectbyid1" title="Información general"
+          *ngIf="promotion.agreement.summary || promotion.agreement.canCancel">
+          <ng-template ngbTabContent>
+            <div class="row mt-2">
+              <div class="col-12" [innerHTML]="promotion.agreement.summary" *ngIf="promotion.agreement.summary"></div>
+
+
+              <div class="col-12 div-calendar" *ngIf="promotion.agreement.canCancel">
+                {{ promotion.agreement.canCancel == 1 ? 'Se permite cancelación' : 'No se permite cancelación' }}</div>
+            </div>
+          </ng-template>
+        </ngb-tab>
+
+        <ngb-tab id="tab-selectbyid2" title="Incluye"
+          *ngIf="promotion.agreement.include || promotion.agreement.notInclude">
+          <ng-template ngbTabContent>
+
+
+            <div class="row mt-2">
+              <div class="col-12">
+                <h4 *ngIf="promotion.agreement.include">¿Qué incluye?</h4>
+
+              </div>
+              <div class="col-12" [innerHTML]="promotion.agreement.include" *ngIf="promotion.agreement.include"></div>
+
+              <div class="col-12">
+                <h4 *ngIf="promotion.agreement.include">¿Qué no incluye?</h4>
+              </div>
+              <div class="col-12" [innerHTML]="promotion.agreement.notInclude" *ngIf="promotion.agreement.notInclude">
+              </div>
+            </div>
+          </ng-template>
+        </ngb-tab>
+
+        <ngb-tab id="tab-selectbyid3" title="Vigencia" *ngIf="promotion.agreement.policy">
+          <ng-template ngbTabContent>
+
+            <div class="row mt-2">
+              <div class="col-12 div-calendar">Fecha para el viaje: {{ promotion.agreement.startDate | date: 'mediumDate' }} al
+                {{ promotion.agreement.finishDate | date: 'mediumDate' }}</div>
+              <div class="col-12" [innerHTML]="promotion.agreement.policy" *ngIf="promotion.agreement.policy"></div>
+            </div>
+          </ng-template>
+        </ngb-tab>
+
+        <ngb-tab id="tab-selectbyid4" title="Políticas y términos"
+          *ngIf="promotion.agreement.policy || promotion.agreement.terms">
+          <ng-template ngbTabContent>
+            <div class="row mt-2">
+              <div class="col-12" [innerHTML]="promotion.agreement.terms" *ngIf="promotion.agreement.terms"></div>
+            </div>
+          </ng-template>
+        </ngb-tab>
+      </ngb-tabset>
+
+
+    </div>
+  </div>
+
+
+
+
+
+</div>
+
+
+<div class="modal-footer justify-content-center">
+  <button type="button" class="btn btn-danger" (click)="close()">Cerrar</button>
+</div>

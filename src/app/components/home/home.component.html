@@ -1,0 +1,81 @@
+<div id="main">
+<!------------------------------PRINCIPAL VIEW----------------------------------->
+
+   <app-search-wrapper *ngIf="informationHotelCarrusel" [establismentInformation]="informationHotelCarrusel"></app-search-wrapper>
+
+
+    <div class="top-wrapper top-wrapper-dark home-top">
+        <div class="top-inner">
+           <app-top-wrapper-home *ngIf="informationHotelCarrusel" [establismentInformation]="informationHotelCarrusel"></app-top-wrapper-home>
+        </div>
+    </div>
+
+
+
+
+
+<!-----------------------------------Carrusel-------------------------------->
+  <app-carrusel-home *ngIf="informationHotelCarrusel" [establismentInformation]="informationHotelCarrusel" [informationsMainServices]="informationsMainServices" [informationHotelCarrusel]="informationHotelCarrusel" [roomsTypeAvailables]="roomsTypeAvailables" ></app-carrusel-home>
+<!-----------------------------------Carrusel-------------------------------->
+
+
+
+
+
+<!----------------------------Top Wrapper-------------------------------------->
+    <!--<app-top-wrapper-home></app-top-wrapper-home>-->
+<!----------------------------Top Wrapper-------------------------------------->
+
+
+
+
+
+<app-about-home *ngIf="informationHotelCarrusel" [establismentInformation]="informationHotelCarrusel"></app-about-home>
+
+
+
+
+<!----------------------------Our Rooms-------------------------------------->
+   <app-our-rooms-home *ngIf="informationHotelCarrusel && informationsOurRoomSection" [informationsOurRoomSection]="informationsOurRoomSection" [establismentInformation]="informationHotelCarrusel"></app-our-rooms-home>
+<!----------------------------Our Rooms-------------------------------------->
+
+
+
+
+<!---------------------------Best Places-------------------------------------->   
+    <app-best-places-home *ngIf="informationHotelCarrusel" [establismentInformation]="informationHotelCarrusel"></app-best-places-home>
+<!---------------------------Best Places-------------------------------------->
+
+
+
+
+<!--------------------------------Client Say----------------------------------------->    
+ <!--<app-client-say-home></app-client-say-home>   --> 
+<!-----------------------------------Client Say---------------------------------->
+
+
+
+
+<!-------------------------------------Latest News--------------------------------------->
+   <!--<app-latest-news-home></app-latest-news-home>-->
+<!-------------------------------------Latest News--------------------------------------->
+
+
+
+
+
+<!------------------------------PRINCIPAL VIEW----------------------------------->
+
+
+
+
+
+ <!------------------------FOOTER------------------------------------>   
+
+   <app-footer *ngIf="informationHotelCarrusel" [establismentInformation]="informationHotelCarrusel"></app-footer>
+ <!------------------------FOOTER------------------------------------>   
+
+
+</div>
+
+<ngx-loading [show]="loading" [config]="{fullScreenBackdrop: true }"></ngx-loading>

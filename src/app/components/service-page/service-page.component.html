@@ -1,0 +1,66 @@
+<div class="not-front page-rooms" *ngIf="establismentInformation">
+  <div id="main">
+    <app-search-wrapper [establismentInformation]="establismentInformation"></app-search-wrapper>
+
+    <div class="top-wrapper">
+      <div>
+        <app-top-wrapper-home [establismentInformation]="establismentInformation"></app-top-wrapper-home>
+      </div>
+    </div>
+
+    <div class="breadcrumbs1_wrapper mt-3">
+      <div class="container">
+        <div class="breadcrumbs1">
+          <a [routerLink]="'/' + establismentInformation.token">Inicio</a><span>|</span>Nuestros servicios
+        </div>
+      </div>
+    </div>
+
+    <div id="content">
+      <div class="container" *ngIf="servicesPageable?.length > 0">
+        <div class="title1">NUESTROS SERVICIOS</div>
+
+        <div class="title2"> Conoce y disfruta los servicios que tenemos a tu disposición </div>
+
+        <div class="our-rooms-wrapper row mt-3" infiniteScroll [infiniteScrollDistance]="2"
+          [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 form-group search-results"
+            *ngFor="let image of servicesPageable; let i = index">
+            <figure id="services" class="our-rooms-img">
+              <img [src]="server + image.urlImage" width="400" height="400" class="img-responsive" />
+              <div class="services-inner__description">
+                <p class="services-inner__description-title">
+                  {{ image.title }}
+                </p>
+
+                <div class="services-inner__description-paragraph">
+                  <p class="text-white title-custom" style="font-size: 1.3rem; margin-bottom: 0;
+                  font-weight: bold;" *ngIf="image.price != 0 && image.price">
+                    Desde
+                  </p>
+                  <p class="color-FF0084 title-custom">
+                    {{ image.price == 0 || !image.price ? 'Servicio de cortesía' : '$'+(image.price | number:'':'es') + ' COP' }}
+                  </p>
+                  <p class="text-white p-custom">{{ image.summary }}</p>
+                </div>
+
+              </div>
+
+              <i class="fa fa-long-arrow-right float-right" aria-hidden="true"></i>
+
+            </figure>
+          </div>
+        </div>
+      </div>
+
+      <ng-container *ngIf="!loading && servicesPageable?.length == 0">
+        <div class="text-center div-link">
+          <a [routerLink]="'/' + establismentInformation.token" class="p-3">No hay servicios diponibles</a>
+        </div>
+      </ng-container>
+    </div>
+    <app-footer [establismentInformation]="establismentInformation"></app-footer>
+  </div>
+</div>
+
+<ngx-loading [show]="loading" [config]="{ fullScreenBackdrop: true }"></ngx-loading>

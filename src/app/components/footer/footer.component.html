@@ -1,0 +1,114 @@
+<ng-container *ngIf="bestDestinationsAvailablesFooter && informationHotelFooter">
+    <div class="bot1-wrapper">
+        <div class="container">
+            <div class="bot1 clearfix bot-footer">
+                <div class="logo2_wrapper">
+                    <a [routerLink]="'/' + establismentInformation.token">
+                        <img class="img-hotel-footer hover-general" src="{{informationHotelFooter.logoUrlCloud}}" alt="Imagen hotel">
+                    </a>
+                </div>
+
+                <div class="social2-wrapper">
+                    <ul class="social2 mb-0">
+                        <li *ngFor="let socialNetwork of informationHotelFooter.socialNetworks" class="hover-general">
+                            <a *ngIf="socialNetwork.state == 1" target="_blank" href="{{ socialNetwork.url }}" class="custom-link-footer">
+                                <i class="fa fa-{{ socialNetwork.name }} text-black"></i></a>
+                        </li>
+                    </ul>
+                </div>               
+            </div>
+        </div>
+    </div>
+    <div class="bot2-wrapper">
+        <div class="container">
+            <div class="bot2 clearfix">
+                <div class="row">
+                    <div class="col-md-6">
+
+                        <div class="contact1 text-white p-1 hover-general">
+                            {{ informationHotelFooter.name | uppercase}}
+                        </div>
+
+                        <div class="contact1 text-white p-1 hover-general">
+                            <i class="fa fa-address-book icon-whatsapp mr-1 font-size-19 "></i> {{ informationHotelFooter.commercialAddress }}
+                        </div>                      
+                         <div class="contact1 text-white p-1 hover-general">
+                            <i class="fa fa-id-card icon-whatsapp mr-1 font-size-19 "></i> RNT: {{ informationHotelFooter.rnt }}
+                        </div>
+
+                        <div>
+                                 <div class="contact1 p-1 hover-general" *ngIf="informationHotelFooter.whatsApp != '' && informationHotelFooter.whatsApp != null">
+                                    <a target="_blank" class="text-white" href="{{ serverWs + '/' + '57' + informationHotelFooter.whatsApp + '?text=Quisiera hacer un reserva en '+ informationHotelFooter.name +'. Agradezco me envíen mayor información' }}"><i class="fa fa-whatsapp icon-whatsapp mr-1 font-size-19 "></i>(+57) {{ informationHotelFooter.whatsApp }}</a>
+                                </div>
+
+                                <div class="contact1 p-1 hover-general">
+                                    <i class="fa fa-envelope-o icon-whatsapp mr-1 font-size-19"></i> <a target="_blank" class="text-white" href="mailto:{{ informationHotelFooter.emailAddress }}">{{ informationHotelFooter.emailAddress }}</a>
+                                </div>
+                                <div class="contact1 text-white p-1 hover-general">
+                                    <i class="fa fa-envelope-o icon-whatsapp mr-1 font-size-19"></i> <a target="_blank" class="text-white" href="mailto:{{ informationHotelFooter.emailReservation }}">{{ informationHotelFooter.emailReservation }}</a>
+                                </div>
+                        </div>
+                    </div>
+                  
+                    <div class="col-md-4 offset-md-2" *ngIf="bestDestinationsAvailablesFooter?.length > 0">
+                        <div class="bot2-title">Lugares recomendados para visitar</div>
+                        <ul class="best1 clearfix">
+                            <li *ngFor="let item of bestDestinationsAvailablesFooter; let i = index">
+                                <a
+                                    [routerLink]="['/' + establismentInformation.token + '/destino', item.destinationId, item.hashtag]"><img
+                                        src="{{server + item.urlImage}}" alt="Imagen de lugares del hotel"
+                                        class="img-fluid img-footer-api"></a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bot3-wrapper">
+        <div class="container">
+            <div class="bot3 clearfix">
+                <ul class="menu-bot">
+                    <li class="nav-item hover-general"><a [routerLink]="'/' + establismentInformation.token"
+                            class="active nav-link">{{ 'HOME.FOOTER.HOME' | translate }}</a></li>
+
+                    <li class="nav-item hover-general" *ngIf="sectionHidden?.aboutUs">
+                        <a
+                            [routerLink]="'/' + establismentInformation.token + '/about-us'"
+                            class="nav-link">{{ 'HOME.FOOTER.ABOUT_US' | translate }}</a></li>
+
+
+                    <li class="nav-item hover-general" *ngIf="sectionHidden?.rooms"><a
+                            [routerLink]="'/' + establismentInformation.token + '/our-rooms'"
+                            class="nav-link">{{ 'HOME.FOOTER.ROOMS' | translate }}</a></li>
+
+
+                    <!-- <li class="nav-item"><a routerLink="/reservations" class="nav-link">{{ 'HOME.FOOTER.RESERVATIONS' | translate }}</a></li> -->
+                    <li class="nav-item hover-general" *ngIf="sectionHidden?.places"><a
+                            [routerLink]="'/' + establismentInformation.token + '/destinos'"
+                            class="nav-link">{{ 'HOME.FOOTER.DESTINATIONS' | translate }}</a></li>
+
+
+
+                    <li class="nav-item hover-general" *ngIf="sectionHidden?.gallery"><a
+                            [routerLink]="'/' + establismentInformation.token + '/galeria'"
+                            class="nav-link ">{{ 'HOME.TOPMENU.GALLERY' | translate }}</a></li>
+
+
+
+                    <li class="nav-item hover-general"><a [routerLink]="'/' + establismentInformation.token + '/contact-us'"
+                            class="nav-link">{{ 'HOME.FOOTER.CONTACT' | translate }}</a></li>
+
+
+                </ul>
+
+                <div class="copyrights">{{ 'HOME.FOOTER.COPYRIGHT_1' | translate }} <a href="http://www.jirka.co/"
+                        target="_blank">{{ 'HOME.FOOTER.COPYRIGHT_2' | translate }}</a>.
+                    {{ 'HOME.FOOTER.COPYRIGHT_3' | translate }}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</ng-container>

@@ -1,0 +1,65 @@
+<div class="not-front page-rooms" *ngIf="establismentInformation">
+    <div id="main">
+        <app-search-wrapper [establismentInformation]="establismentInformation"></app-search-wrapper>
+
+        <div class="top-wrapper">
+            <div>
+                <app-top-wrapper-home [establismentInformation]="establismentInformation"></app-top-wrapper-home>
+            </div>
+        </div>
+
+
+
+        <div class="breadcrumbs1_wrapper mt-3">
+            <div class="container">
+                <div class="breadcrumbs1"><a [routerLink]="'/' + establismentInformation.token">Inicio</a><span>|</span>Galería
+                </div>
+            </div>
+        </div>
+
+        <div id="content">
+
+
+            <div class="container" *ngIf="photosPageable?.length > 0">
+
+                <div class="title1">GALERÍA</div>
+
+                <div class="title2">Conozca nuestras instalaciones</div>
+
+                <div class="our-rooms-wrapper row mt-3 pl-3 pr-3" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
+
+                    <ng-container *ngFor="let image of photosPageable; let i=index">
+
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 form-group p-0 m-0" *ngIf="((i + 1)%2) == 0">
+                        
+                            <figure class="our-rooms-img" ngbTooltip="{{ image.name }}">
+                                <img [src]="image.imageCloud" (click)="open(i)" style="height: 250px;"/>
+                            </figure>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-12 form-group p-0 m-0"  *ngIf="((i + 1)%2) != 0">
+                        
+                            <figure class="our-rooms-img" ngbTooltip="{{ image.name }}">
+                                <img [src]="image.imageCloud" (click)="open(i)" style="height: 250px;"/>
+                            </figure>
+                        </div>
+                    </ng-container>
+                    
+                  
+
+                </div>
+            </div>
+
+            <ng-container *ngIf="!loading && photosPageable?.length == 0">
+                <div class="text-center div-link">
+                    <a [routerLink]="'/'+ establismentInformation.token" class="p-3">No hay fotos diponibles</a>
+                </div>
+            </ng-container>
+
+
+
+        </div>
+        <app-footer [establismentInformation]="establismentInformation"></app-footer>
+    </div>
+</div>
+
+<ngx-loading [show]="loading" [config]="{fullScreenBackdrop: true }"></ngx-loading>

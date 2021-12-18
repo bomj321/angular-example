@@ -1,0 +1,53 @@
+.txt8
+{
+	display: flex;
+}
+
+.txt8 i
+{
+	background-color: #f6ae00;
+    color: white;
+    font-size: 30px;
+    padding: 0.65rem;
+    border-radius: 8px;
+}
+
+img
+{
+  object-fit: cover !important;
+}
+
+.txt8 i
+{
+	margin-right: 9px;
+}
+
+.our-rooms-img {
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+}
+.our-rooms-img img {
+    transition: all 0.3s linear
+}
+.our-rooms-img img:hover {
+    transform: scale(1.05);
+    opacity: 0.95;
+}
+.move-left {
+    margin-top: -20px;
+}
+
+.move-right {
+    margin-left: -70px;
+    margin-top: 30px;
+}
+
+@media(max-width: 576px) {
+    .move-left {
+        margin-top: 0;
+    }
+    .move-right {
+        margin:0;
+    }
+}

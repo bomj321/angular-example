@@ -1,0 +1,22 @@
+::ng-deep .modal-body .card-header {
+    border-top-left-radius: 0.8rem !important;
+    border-top-right-radius: 0.8rem !important;
+}
+
+::ng-deep .modal-lg {
+  @media (min-width: 576px) and (max-width: 991px) {
+    max-width: 100% !important;
+  }
+
+  @media (min-width: 992px) {
+    max-width: 100% !important;
+  }
+
+  @media (min-width: 1100px) {
+    max-width: 1100px !important;
+  }
+}
+
+.border-state {
+  border: 1px solid white;padding: 0 6px;
+}

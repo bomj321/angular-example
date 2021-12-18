@@ -1,0 +1,70 @@
+<div class="not-front page-rooms" *ngIf="establismentInformation">
+  <div id="main">
+    <app-search-wrapper [establismentInformation]="establismentInformation"></app-search-wrapper>
+
+    <div class="top-wrapper">
+      <div>
+        <app-top-wrapper-home [establismentInformation]="establismentInformation"></app-top-wrapper-home>
+      </div>
+    </div>
+
+    <div class="breadcrumbs1_wrapper mt-3">
+      <div class="container">
+        <div class="breadcrumbs1">
+          <a [routerLink]="'/' + establismentInformation.token">Inicio</a><span>|</span>Promociones
+        </div>
+      </div>
+    </div>
+
+    <div id="content">
+      <div class="container" *ngIf="promotions?.length > 0">
+        <div class="title1">NUESTRAS PROMOCIONES</div>
+
+        <div class="title2"> Conoce y disfruta las promociones que tenemos a tu disposición </div>
+
+        <div class="our-rooms-wrapper row mt-3">
+          <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 form-group search-results"
+            *ngFor="let promotion of promotions; let i = index">
+            <figure id="services" class="our-rooms-img" (click)="openModalPromotion(promotion)">
+              <button class="btn-basic-discount">-{{ promotion.agreement.basicDiscount }}%</button>
+              <img *ngIf="promotion.agreement._mainHotelPhoto" [src]="getUrl(promotion.agreement._mainHotelPhoto)" class="img-responsive" />
+              <img *ngIf="!promotion.agreement._mainHotelPhoto" [src]="getUrlRate(promotion.agreement.urlImage)" class="img-responsive" />              
+              <div class="services-inner__description">
+                <p class="services-inner__description-title">{{ promotion.agreement.name }} </p>
+                <p class="services-inner__description-type"><i class="fa fa-tags" aria-hidden="true"></i>
+                  {{ promotion.type == 2 ? 'Plan' : 'Promoción' }} </p>
+              </div>
+
+            </figure>
+
+            <div class="row m-0 pt-2">
+
+              <div class="col-12 div-calendar p-0"><i class="fa fa-calendar" aria-hidden="true"></i> Del
+                {{ promotion.agreement.startDate | date: 'mediumDate' }} al
+                {{ promotion.agreement.finishDate | date: 'mediumDate' }}</div>
+            </div>
+
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group">
+
+                  <button class="btn btn-reservations mt-2" (click)="setAgreement(promotion)">Reservar</button>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <ng-container *ngIf="!loading && promotions?.length == 0">
+          <div class="text-center div-link">
+            <a [routerLink]="'/' + establismentInformation.token" class="p-3">No hay promociones diponibles</a>
+          </div>
+        </ng-container>
+      </div>
+      <app-footer [establismentInformation]="establismentInformation"></app-footer>
+    </div>
+  </div>
+
+  <ngx-loading [show]="loading" [config]="{ fullScreenBackdrop: true }"></ngx-loading>

@@ -1,0 +1,121 @@
+<div id="best-places" *ngIf="bestDestinationsAvailables?.length > 0">
+  <div class="container">
+
+    <div class="title1 title-custom">Descubre los sitios recomendados para visitar cerca al hotel</div>
+
+    <ng-container *ngFor="let bestDestinationAvailable of bestDestinationsAvailables; let i = index">
+
+      <div class="row mb-3" *ngIf="i%2 === 0">
+
+        <div class="col-8">
+
+          <div *ngIf="bestDestinationAvailable[0]" class="div-images-destinations">
+            <div class="paragraph-best-place-title d-xl-block d-lg-block d-md-block d-sm-none d-none">
+              <p class="mb-0">{{ bestDestinationAvailable[0].name }}</p>
+              <p class="paragraph-hashtag">#{{ bestDestinationAvailable[0].hashtag }}</p>
+            </div>
+
+            <img
+              [routerLink]="['/' + establismentInformation.token + '/destino', bestDestinationAvailable[0].destinationId, bestDestinationAvailable[0].hashtag]"
+              class="img-fluid w-100 img-best-places kenburns-bottom"
+              [src]="server + bestDestinationAvailable[0].urlImage" alt="Imagen del destino">
+          </div>
+
+        </div>
+
+        <div class="col-4">
+          <div class="row mb-3 p-0">
+            <div class="col-12">
+
+              <div *ngIf="bestDestinationAvailable[1]" class="div-images-destinations">
+                <div class="paragraph-best-place-title d-xl-block d-lg-block d-md-block d-sm-none d-none">
+                  <p class="mb-0">{{ bestDestinationAvailable[1].name }}</p>
+                  <p class="paragraph-hashtag">#{{ bestDestinationAvailable[1].hashtag }}</p>
+                </div>
+                <img
+                  [routerLink]="['/' + establismentInformation.token + '/destino', bestDestinationAvailable[1].destinationId, bestDestinationAvailable[1].hashtag]"
+                  class="img-fluid w-100 img-best-places kenburns-bottom"
+                  [src]="server + bestDestinationAvailable[1].urlImage" alt="Imagen del destino">
+              </div>
+
+            </div>
+          </div>
+
+          <div class="row p-0">
+            <div class="col-12">
+
+              <div *ngIf="bestDestinationAvailable[2]" class="div-images-destinations">
+                <div class="paragraph-best-place-title d-xl-block d-lg-block d-md-block d-sm-none d-none">
+                    <p class="mb-0">{{ bestDestinationAvailable[2].name }}</p>
+                    <p class="paragraph-hashtag">#{{ bestDestinationAvailable[2].hashtag }}</p>
+                  </div>
+                <img
+                  [routerLink]="['/' + establismentInformation.token + '/destino', bestDestinationAvailable[2].destinationId, bestDestinationAvailable[2].hashtag]"
+                  class="img-fluid w-100 img-best-places kenburns-bottom"
+                  [src]="server + bestDestinationAvailable[2].urlImage" alt="Imagen del destino">
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row mt-2 mb-3" *ngIf="i%2 !== 0">
+
+        <div class="col-4">
+          <div class="row p-0">
+            <div class="col-12">
+
+              <div *ngIf="bestDestinationAvailable[0]" class="div-images-destinations">
+                <div class="paragraph-best-place-title d-xl-block d-lg-block d-md-block d-sm-none d-none">
+                    <p class="mb-0">{{ bestDestinationAvailable[0].name }}</p>
+                    <p class="paragraph-hashtag">#{{ bestDestinationAvailable[0].hashtag }}</p>
+                  </div>
+                <img
+                  [routerLink]="['/' + establismentInformation.token + '/destino', bestDestinationAvailable[0].destinationId, bestDestinationAvailable[0].hashtag]"
+                  class="img-fluid w-100 img-best-places kenburns-bottom"
+                  [src]="server + bestDestinationAvailable[0].urlImage" alt="Imagen del destino">
+              </div>
+
+
+
+            </div>
+          </div>
+
+          <div class="row p-0">
+            <div class="col-12">
+              <div *ngIf="bestDestinationAvailable[1]" class="div-images-destinations">
+                <div class="paragraph-best-place-title d-xl-block d-lg-block d-md-block d-sm-none d-none">
+                    <p class="mb-0">{{ bestDestinationAvailable[1].name }}</p>
+                    <p class="paragraph-hashtag">#{{ bestDestinationAvailable[1].hashtag }}</p>
+                  </div>
+                <img
+                  [routerLink]="['/' + establismentInformation.token + '/destino', bestDestinationAvailable[1].destinationId, bestDestinationAvailable[1].hashtag]"
+                  class="img-fluid w-100 img-best-places kenburns-bottom"
+                  [src]="server + bestDestinationAvailable[1].urlImage" alt="Imagen del destino">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-8">
+          <div *ngIf="bestDestinationAvailable[2]" class="div-images-destinations">
+            <div class="paragraph-best-place-title d-xl-block d-lg-block d-md-block d-sm-none d-none">
+                <p class="mb-0">{{ bestDestinationAvailable[2].name }}</p>
+                <p class="paragraph-hashtag">#{{ bestDestinationAvailable[2].hashtag }}</p>
+              </div>
+            <img
+              [routerLink]="['/' + establismentInformation.token + '/destino', bestDestinationAvailable[2].destinationId, bestDestinationAvailable[2].hashtag]"
+              class="img-fluid w-100 img-best-places kenburns-bottom"
+              [src]="server + bestDestinationAvailable[2].urlImage" alt="Imagen del destino">
+          </div>
+        </div>
+
+      </div>
+    </ng-container>
+
+
+  </div>
+</div>

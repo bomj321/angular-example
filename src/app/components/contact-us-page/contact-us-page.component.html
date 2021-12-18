@@ -1,0 +1,145 @@
+<div class="not-front page-contacts" *ngIf="establismentInformation">
+
+    <app-search-wrapper [establismentInformation]="establismentInformation"></app-search-wrapper>
+
+
+    <app-top-wrapper-home [establismentInformation]="establismentInformation"></app-top-wrapper-home>
+
+
+    <div class="breadcrumbs1_wrapper mt-3">
+        <div class="container">
+            <div class="breadcrumbs1"><a
+                    [routerLink]="'/' + establismentInformation.token">{{ 'CONTACTUS.HOME' | translate }}</a><span>|</span>{{ 'CONTACTUS.CONTACT_US' | translate }}
+            </div>
+        </div>
+    </div>
+
+    <div id="content" *ngIf="informationHotelContact" class="fade-in-8">
+        <div class="container">
+
+            <div class="title1">{{ 'CONTACTUS.CONTACT_INFORMATION' | translate }}</div>
+
+
+            <div class="contact-location-wrapper mt-xl-5 mt-lg-5 mt-md-1 mt-sm-1 mt-1">
+
+                <div class="contact-location order-1">
+                    <div class="txt1 txt1-custom">{{ 'CONTACTUS.STAY_IN_CONTACT' | translate }}</div>
+                    <div class="txt2 txt2-custom">{{ informationHotelContact.name }}</div>
+                    <div class="txt4 txt4-custom">{{ informationHotelContact.commercialAddress }}</div>
+                    <div class="txt5 txt5-custom">
+                        <dl class="dl1 dl1-custom">
+                            <dt>{{ 'CONTACTUS.CALL_US' | translate }}:</dt>
+                            <dd>
+                                <a target="_blank"
+                                    href="{{ serverWs + '/' + '57' + informationHotelContact.whatsApp + '?text=Quisiera hacer un reserva en '+ informationHotelContact.name +'. Agradezco me envíen mayor información' }}">
+                                    <i
+                                        class="fa fa-whatsapp icon-whatsapp mr-1 font-size-19"></i>(+57) {{ informationHotelContact.whatsApp }}
+                                </a>
+                            </dd>
+                            <dt>{{ 'CONTACTUS.MAIL' | translate }}:</dt>
+                            <dd>
+                                <a target="_blank" href="mailto:{{ informationHotelContact.emailAddress }}">
+                                    <i class="fa fa-envelope-o icon-whatsapp mr-1 font-size-19"></i>
+                                    {{ informationHotelContact.emailAddress }}</a>
+                            </dd>
+
+                            <ng-container *ngFor="let socialNetwork of informationHotelContact.socialNetworks">
+
+                                <ng-container *ngIf="socialNetwork.state == 1"> <!--*ngIf="socialNetwork.state == 1"-->
+                                    <dt>{{ socialNetwork.name | titlecase }}:</dt>
+                                    <dd>
+                                        <i *ngIf="socialNetwork.name == 'facebook'"
+                                            class="fa fa-facebook icon-whatsapp mr-1 font-size-19"></i>
+                                        <i *ngIf="socialNetwork.name == 'twitter'"
+                                            class="fa fa-twitter icon-whatsapp mr-1 font-size-19"></i>
+                                        <i *ngIf="socialNetwork.name == 'youtube'"
+                                            class="fa fa-youtube icon-whatsapp mr-1 font-size-19"></i>
+                                        <i *ngIf="socialNetwork.name == 'instagram'"
+                                            class="fa fa-instagram icon-whatsapp mr-1 font-size-19"></i>
+                                        <i *ngIf="socialNetwork.name == 'linkedIn'"
+                                            class="fa fa-linkedin icon-whatsapp mr-1 font-size-19"></i>
+
+
+                                        <a target="_blank" href="{{ socialNetwork.url }}">{{ socialNetwork.name | titlecase}}</a>
+                                    </dd>
+                                </ng-container>
+
+                            </ng-container>
+
+
+                        </dl>
+                    </div>
+                </div>
+
+                <!-- <div class="order-2" id="google_map" leaflet [leafletOptions]="options" [leafletLayers]="layers"
+                    [leafletLayersControl]="layersControl" (leafletClick)="clickOnMap($event)"
+                    *ngIf="informationHotelContact.latitude && informationHotelContact.longitude && options && layers">
+                </div> -->
+                <div id="map"></div>
+
+                <!-- <div class="order-2" id="google_map"
+                    *ngIf="!informationHotelContact.latitude || !informationHotelContact.longitude || !options || !layers">
+                </div> -->
+
+
+            </div>
+
+
+            <!--   <div class="title3">{{ 'CONTACTUS.CONTACT_FORM' | translate }}</div>
+
+            <div id="note"></div>
+            <div id="fields">
+                <form id="ajax-contact-form" class="form-horizontal clearfix" action="javascript:;">
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="inputName2">{{ 'CONTACTUS.NAME' | translate }} <span>*</span></label>
+                                        <input type="text" class="form-control" id="inputName2" name="name" value=""
+                                               placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="inputEmail">{{ 'CONTACTUS.MAIL' | translate }} <span>*</span></label>
+                                        <input type="text" class="form-control" id="inputEmail" name="email" value=""
+                                               placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="inputMessage2">{{ 'CONTACTUS.COMMENTS' | translate }} <span>*</span></label>
+                                <textarea class="form-control" rows="5" id="inputMessage2" name="content"
+                                          placeholder=""></textarea>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <button type="submit" class="btn-default btn-cf-submit">{{ 'CONTACTUS.SEND_YOUR_MESSAGE' | translate }} </button>
+                </form>
+            </div>
+
+        -->
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <app-footer [establismentInformation]="establismentInformation"></app-footer>
+</div>

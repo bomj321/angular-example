@@ -1,0 +1,10 @@
+<div class="input-group mb-1">
+  <div class="input-group-prepend">
+    <button class="btn btn-number" type="button" id="button-addon1" (click)="subGuests()" [disabled]="readonly">-</button>
+  </div>
+  <input class="form-control text-center input-number" type="number" [min]="min" [max]="max" [value]="value"
+    [disabled]="isDisabled" (input)="onInput($event.target.value)" (change)="onChangeEvent($event.target.value)" [readonly]="readonly" id="{{ id }}">
+  <div class="input-group-append">
+    <button class="btn btn-number" type="button" id="button-addon2" (click)="addGuests()" [disabled]="readonly">+</button>
+  </div>
+</div>

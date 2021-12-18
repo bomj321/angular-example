@@ -1,0 +1,381 @@
+/*****************************General styles*********************************/
+.social-wrapper {
+  display: none;
+}
+
+.navbar_ .navbar-nav>li {
+  margin-left: 0;
+}
+
+.navbar_ .navbar-nav>li>.nav-link {
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 16px;
+}
+
+.btn-form1-submit:after {
+  background: none;
+}
+
+.slide-text .txt1 span {
+  font-size: 70px;
+  margin-right: 17px;
+}
+
+.slide-text .txt1 i {
+  display: none;
+}
+
+.slide-buttons-wrapper {
+  margin-bottom: 140px;
+}
+
+.about-slider-left {
+  width: auto;
+  padding-right: 0;
+  float: none;
+}
+
+.about-slider-right {
+  padding-left: 0;
+  width: auto;
+  float: none;
+  padding-top: 20px;
+}
+
+.about-slider-left {
+  padding-left: 95px;
+}
+
+.about-slider-thumb {
+  width: 110px;
+}
+
+.place {
+  padding: 50px;
+}
+
+.place .caption {
+  float: none;
+  padding: 0;
+  width: auto;
+}
+
+.place .figure {
+  position: relative;
+  right: auto;
+  top: auto;
+  width: 100%;
+  padding-left: 0;
+}
+
+#content-wrapper:before {
+  margin-left: 150px;
+}
+
+.room-wide figure {
+  float: none;
+  width: auto;
+  margin-right: 0;
+  margin-bottom: 15px;
+}
+
+.room-wide figure img {
+  width: 100%;
+}
+
+.our-rooms-left {
+  float: none;
+  width: auto;
+  padding-right: 0;
+  padding-left: 95px;
+  margin-bottom: 30px;
+}
+
+.our-rooms-thumb {
+  width: 110px;
+}
+
+.our-rooms-right {
+  float: none;
+  padding-left: 0;
+  width: auto;
+}
+
+.slider-nav2 .slider-item {
+  padding-bottom: 20px;
+}
+
+.share-to-friends {
+  float: none;
+  padding-bottom: 10px;
+}
+
+.blog-tags {
+  float: none;
+}
+
+.right .our-rooms-left {
+  float: none;
+  padding-left: 0;
+  padding-right: 95px;
+}
+
+.right .our-rooms-right {
+  padding-right: 0;
+}
+
+.page-not-found .txt1 {
+  padding: 50px 0;
+}
+
+#about {
+  padding: 80px 0;
+}
+
+#rooms {
+  padding: 80px 0 30px;
+}
+
+#best-places {
+  padding: 80px 0;
+}
+
+#what-client-say {
+  padding: 80px 0;
+}
+
+#latest-news {
+  padding: 80px 0;
+}
+
+#content {
+  padding: 20px 0 60px;
+}
+
+.page-about #about {
+  padding-top: 40px;
+}
+
+.page-numbers-wrapper {
+  padding: 60px 0 30px;
+}
+
+#our-team {
+  padding: 80px 0 50px;
+}
+
+#content-inner {
+  padding: 40px 0 60px;
+}
+
+.blog-search {
+  margin-bottom: 40px;
+}
+
+.booking2-wrapper {
+  margin-bottom: 40px;
+}
+
+.our-rooms-wrapper {
+  margin-bottom: 40px;
+}
+
+
+/*****************************General styles*********************************/
+
+
+
+
+/**********************************Steppers****************************/
+
+.active .bs-stepper-circle {
+  background-color: #fab100 !important;
+}
+
+
+/**********************************Steppers****************************/
+
+
+
+
+
+/**********************************************Image of acomodations************************************/
+
+.text-acommodation-name {
+  font-size: 13px !important;
+}
+
+.text-acommodation-price {
+  font-size: 21px !important;
+}
+
+.btn-0073b7 {
+  background: #0073b7;
+  color: white;
+}
+
+.txt8 {
+  display: flex;
+}
+
+.txt4 {
+  font-size: 0.85rem !important;
+}
+
+
+.txt8 i {
+  background-color: #f6ae00;
+  color: white;
+  font-size: 35px;
+  padding: 0.3rem;
+  border-radius: 8px;
+}
+
+.txt8 i {
+  margin-right: 9px;
+}
+
+/**********************************************Image of acomodations************************************/
+
+
+
+
+
+/**********************Reservations Seleted*****************************/
+.row-reservations-selected {
+  margin-top: 43px;
+
+}
+
+.font-weight-custom {
+  font-weight: 300;
+}
+
+/**********************Reservations Seleted*****************************/
+
+
+
+
+
+
+/***********************Reservation form*********************************/
+
+.is-invalid {
+  border-color: #dc3545 !important;
+}
+
+
+.btn-invalid-reservation {
+  opacity: 0.4;
+
+}
+
+#ajax-contact-form {
+  border: 1px solid #ebebeb;
+  padding: 2rem;
+  background: #fafafa;
+  padding-top: 0.7rem;
+}
+
+.custom-label-reservation {
+  cursor: pointer;
+}
+
+#ajax-contact-form input,
+#ajax-contact-form textarea {
+  border-radius: 5px;
+}
+
+.bg-custom-reservation {
+  background: #0073B7;
+  color: white;
+}
+
+span.input-group-text {
+  background-color: #fafafa;
+  color: gray;
+  border: 1px solid #fafafa;
+
+}
+
+.custom-control-label {
+  font-size: 12px !important;
+  align-items: center;
+}
+
+select {
+  height: 35px !important;
+}
+
+.viewSelected {
+  color: #FAB100;
+  transition: all 1s;
+}
+
+.viewSelected h6 {
+  transform: scale(1.3);
+  transition: all 1s;
+}
+
+/***********************Reservation form*********************************/
+
+
+
+
+
+/*****************************MEDIA QUERYS********************************/
+
+@media screen and (min-width: 992px) and (max-width: 1259px) {
+  .img-services {
+    width: 18%;
+    margin-top: 6%;
+  }
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .img-services {
+    width: 18%;
+    margin-top: 3%;
+
+  }
+
+}
+
+@media (min-width: 768px) {
+  .div-guests {
+    margin-top: -20px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .div-rows-information {
+    margin-top: 1rem;
+  }
+
+}
+
+
+
+
+@media (max-width: 575.98px) {
+
+
+  .btn-cf-submit {
+    width: 100% !important;
+  }
+
+  .bs-stepper-label {
+    font-size: 0.6rem !important;
+  }
+
+
+
+}
+
+
+
+
+/*****************************MEDIA QUERYS********************************/

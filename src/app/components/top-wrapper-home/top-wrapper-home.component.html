@@ -1,0 +1,220 @@
+<!-----------VIEW TO SMARTHPHONES-------------------->
+
+<div class="top1-wrapper fade-in-2 d-xl-none d-lg-none d-md-none d-sm-block d-block pr-2 pl-2"
+  *ngIf="informationHotelCarrusel" style="height: auto;">
+  <div class="row justify-content-center align-items-center">
+    <div class="col">
+      <div class="logo_wrapper text-center">
+        <a [routerLink]="'/' + establismentInformation.token" class="logo" style="text-decoration: none;">
+          <img src="{{ informationHotelCarrusel.logoUrlCloud }}" alt="Logo de cotelco"
+            class="img-logo img-logo-cotelco" />
+        </a>
+      </div>
+    </div>
+
+    <div class="col social-links-cellphone"
+      *ngIf="informationHotelCarrusel.whatsApp != '' && informationHotelCarrusel.whatsApp != null">
+      <div class="social-wrapper">
+        <ul class="social">
+          <li>
+            <a class="social-links" href="{{
+                serverWs +
+                  '/' +
+                  '57' +
+                  informationHotelCarrusel.whatsApp +
+                  '?text=Quisiera hacer un reserva en ' +
+                  informationHotelCarrusel.name +
+                  '. Agradezco me envíen mayor información'
+              }}" target="_blank"><i class="fa fa-whatsapp fa-2x mr-1"></i>
+
+              <span class="span-cellphone">(+57) {{ informationHotelCarrusel.whatsApp }}</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col">
+      <nav class="navbar_ navbar navbar-expand-md clearfix">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span><i class="fa fa-bars fa-2x" aria-hidden="true" style="color: black;"></i>
+          </span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="nav navbar-nav sf-menu clearfix">
+            <li id="nav-item-home" class="nav-item hover-general" routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }">
+              <a [routerLink]="'/' + establismentInformation.token"
+                class="nav-link">{{ "HOME.TOPMENU.HOME" | translate }}</a>
+            </li>
+
+            <li class="nav-item hover-general" *ngIf="sectionHidden?.aboutUs" routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }">
+              <a [routerLink]="'/' + establismentInformation.token + '/about-us'"
+                class="nav-link">{{ "HOME.TOPMENU.ABOUT_US" | translate }}</a>
+            </li>
+
+            <li class="nav-item hover-general" *ngIf="sectionHidden?.rooms" routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }">
+              <a [routerLink]="
+                  '/' + establismentInformation.token + '/our-rooms'
+                " class="nav-link">{{ "HOME.TOPMENU.ROOMS" | translate }}</a>
+            </li>
+
+          <!--   <li class="nav-item hover-general" *ngIf="sectionHidden?.places" routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }">
+              <a [routerLink]="'/' + establismentInformation.token + '/destinos'"
+                class="nav-link">{{ "HOME.TOPMENU.DESTINATIONS" | translate }}</a>
+            </li>
+  -->
+            <li class="nav-item hover-general" *ngIf="sectionHidden?.promotions" routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }">
+           
+              <a [routerLink]="
+                '/' + establismentInformation.token + '/promotions'
+              " class="nav-link">Promociones</a>
+            </li>
+
+            <li class="nav-item hover-general" *ngIf="sectionHidden?.services" routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }">
+              <a [routerLink]="
+                '/' + establismentInformation.token + '/services'
+              " class="nav-link">Servicios</a>
+            </li>
+
+
+            <li class="nav-item hover-general" *ngIf="sectionHidden?.gallery" routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }">
+              <a [routerLink]="'/' + establismentInformation.token + '/gallery'"
+                class="nav-link">{{ "HOME.TOPMENU.GALLERY" | translate }}</a>
+            </li>
+
+            <li class="nav-item hover-general" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+              <a [routerLink]="
+                  '/' + establismentInformation.token + '/contact-us'
+                " class="nav-link">{{ "HOME.TOPMENU.CONTACT" | translate }}</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<!-----------VIEW TO PCs-------------------->
+
+<div class="top1-wrapper fade-in-2 d-xl-block d-lg-block d-md-block d-sm-none d-none pr-2 pl-2"
+  *ngIf="informationHotelCarrusel">
+  <div class="container">
+    <div class="top1 clearfix">
+      <div class="social-wrapper">
+        <ul class="social">
+          <li *ngFor="
+              let socialNetwork of informationHotelCarrusel.socialNetworks
+            ">
+            <a *ngIf="socialNetwork.state == 1" target="_blank" href="{{ socialNetwork.url }}"><i
+                class="fa fa-{{ socialNetwork.name }}"></i></a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="social-wrapper"
+        *ngIf="informationHotelCarrusel.whatsApp != '' && informationHotelCarrusel.whatsApp != null">
+        <ul class="social">
+          <li>
+            <a class="social-links" href="{{
+                serverWs +
+                  '/' +
+                  '57' +
+                  informationHotelCarrusel.cellPhone +
+                  '?text=Quisiera hacer un reserva en ' +
+                  informationHotelCarrusel.name +
+                  '. Agradezco me envíen mayor información'
+              }}" target="_blank"><i class="fa fa-whatsapp"></i> (+57)
+              {{ informationHotelCarrusel.whatsApp }}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="top2-wrapper fade-in-4 d-xl-block d-lg-block d-md-block d-sm-none d-none" *ngIf="informationHotelCarrusel">
+  <div class="container" style="min-height: 65px;">
+    <div class="top2 clearfix">
+      <header class="header-pages d-block header-custom">
+        <div class="logo_wrapper text-center">
+          <a [routerLink]="'/' + establismentInformation.token" class="logo" style="text-decoration: none;">
+            <img src="{{ informationHotelCarrusel.logoUrlCloud }}" alt="Logo de cotelco"
+              class="img-logo img-logo-cotelco" />
+          </a>
+        </div>
+      </header>
+      <nav class="navbar_ navbar navbar-expand-md clearfix">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span><i class="fa fa-bars fa-2x" aria-hidden="true" style="color: black;"></i>
+          </span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="nav navbar-nav sf-menu clearfix">
+            <li id="nav-item-home" class="nav-item hover-general" routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }">
+              <a [routerLink]="'/' + establismentInformation.token"
+                class="nav-link">{{ "HOME.TOPMENU.HOME" | translate }}</a>
+            </li>
+
+            <li class="nav-item hover-general" *ngIf="sectionHidden?.aboutUs" routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }">
+              <a [routerLink]="'/' + establismentInformation.token + '/about-us'"
+                class="nav-link">{{ "HOME.TOPMENU.ABOUT_US" | translate }}</a>
+            </li>
+
+            <li class="nav-item hover-general" *ngIf="sectionHidden?.rooms" routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }">
+              <a [routerLink]="
+                  '/' + establismentInformation.token + '/our-rooms'
+                " class="nav-link">{{ "HOME.TOPMENU.ROOMS" | translate }}</a>
+            </li>
+
+            <li class="nav-item hover-general" *ngIf="sectionHidden?.promotions" routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }">
+              <!---->
+              <a [routerLink]="
+                '/' + establismentInformation.token + '/promotions'
+              " class="nav-link">Promociones</a>
+            </li>
+
+            <!--  <li class="nav-item hover-general" *ngIf="sectionHidden?.places" routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }">
+              <a [routerLink]="'/' + establismentInformation.token + '/destinations'"
+                class="nav-link">{{ "HOME.TOPMENU.DESTINATIONS" | translate }}</a>
+            </li>
+-->
+            <li class="nav-item hover-general" *ngIf="sectionHidden?.services" routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }">
+              <a [routerLink]="
+                  '/' + establismentInformation.token + '/services'
+                " class="nav-link">Servicios</a>
+            </li>
+
+            <li class="nav-item hover-general" *ngIf="sectionHidden?.gallery" routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }">
+              <a [routerLink]="'/' + establismentInformation.token + '/gallery'"
+                class="nav-link">{{ "HOME.TOPMENU.GALLERY" | translate }}</a>
+            </li>
+
+            <li class="nav-item hover-general" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+              <a [routerLink]="
+                  '/' + establismentInformation.token + '/contact-us'
+                " class="nav-link">{{ "HOME.TOPMENU.CONTACT" | translate }}</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>

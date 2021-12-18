@@ -1,0 +1,886 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~ngx-toastr/toastr';
+@import 'assets/css/bootstrap.css';
+@import 'assets/css/font-awesome.css';
+@import 'assets/css/superslides.css';
+@import 'assets/css/jquery.fancybox.css';
+@import 'assets/css/select2.css';
+@import 'assets/css/smoothness/jquery-ui-1.10.0.custom.css';
+@import 'assets/css/owl.carousel.css';
+@import 'assets/css/slick.css';
+@import "../node_modules/animate.css/animate.css";
+@import 'leaflet/dist/leaflet.css';
+@import '../node_modules/ngx-lightbox/lightbox.css';
+@import "~@ng-select/ng-select/themes/default.theme.css";
+@import 'assets/css/style.css';
+
+/* You can add global styles to this file, and also import other style files */
+.cal-event {
+  display: none !important;
+}
+
+.cal-cell {
+  text-transform: capitalize;
+}
+
+input.ng-invalid:focus {
+  border: 1px solid red !important;
+}
+
+select.ng-invalid:focus {
+  border: 1px solid red !important;
+}
+
+figure .txt1,
+.text-information-carrusel-name {
+  text-shadow: 2px 2px 1px #1d1c1c;
+}
+
+
+.bg-0073b7 {
+  background: #0073b7;
+  color: white;
+  font-weight: bold;
+}
+
+.bg-0073b7:hover {
+  color: white;
+}
+
+.badge-CC0000 {
+  background-color: #CC0000 !important;
+  color: white !important;
+}
+
+.badge-FF8800 {
+  background-color: #FF8800 !important;
+  color: white !important;
+}
+
+.badge-007E33 {
+  background-color: #007E33 !important;
+  color: white !important;
+
+}
+
+.badge-9933CC {
+  background-color: #9933CC !important;
+  color: white;
+}
+
+
+.currency img {
+  width: 49px !important;
+  border-radius: 99px;
+}
+
+.not-front {
+  .img-logo-cotelco {
+    width: 10;
+    height: 5em;
+    margin-bottom: 3em;
+  }
+}
+
+
+
+.img-logo-cotelco {
+  width: 10;
+  height: 5em;
+  margin-bottom: 3em;
+  // border-radius: 999px;
+}
+
+.img-hotel-footer {
+  width: 14.625em;
+}
+
+
+@media (max-width: 767px) {
+
+  .img-logo-cotelco {
+    width: 8.625em;
+    height: 4.5em;
+    margin-bottom: 0em;
+  }
+
+
+  .not-front {
+    .img-logo-cotelco {
+      width: 8.625em;
+      height: 4.5em;
+      margin-bottom: 0em;
+    }
+  }
+
+}
+
+.bot-footer {
+  padding: 35px 0 35px !important;
+}
+
+
+/*********Custom styles***********/
+
+ng-select {
+  min-width: 100px !important;
+}
+
+.fa-chevron-hover {
+  transition: all 0.5s;
+}
+
+
+.fa-chevron-hover:hover {
+  transform: scale(1.09);
+  cursor: pointer
+}
+
+
+.pink-color-icon {
+  color: #FF0080;
+}
+
+.bg-orange {
+  background-color: #FAB100;
+}
+
+@media (min-width: 768px) {
+  .header-custom {
+    top: 100% !important;
+  }
+
+}
+
+@media (max-width: 767.99px) {
+
+  .name-information-hotel {
+    margin-top: 2em;
+  }
+}
+
+.top1 {
+  border-bottom: none;
+}
+
+.social-wrapper {
+  border-left: none;
+  height: 100%;
+}
+
+.currency {
+  height: 3em;
+}
+
+.social a {
+  line-height: 35px;
+}
+
+
+.top-wrapper-dark .navbar_ .navbar-nav>li>.nav-link {
+
+  line-height: 40px;
+}
+
+.navbar_ .navbar-nav>li>.nav-link {
+  line-height: 35px;
+}
+
+.icon-info-price {
+
+
+  cursor: pointer
+}
+
+.text-info-price {
+  font-size: 0.8em;
+}
+
+
+
+
+.top-wrapper.top-wrapper-dark.home-top .top1-wrapper {
+  background-color: white;
+  height: 35px;
+}
+
+.top1-wrapper {
+  background-color: white;
+  height: 35px;
+}
+
+
+.top1-wrapper .social a {
+  color: black;
+}
+
+.leaflet-popup {
+  bottom: 20px !important;
+}
+
+/*img
+{
+  object-fit: cover !important;
+}*/
+
+.social-links {
+  .fa-whatsapp {
+    background-color: #F6AE00;
+    padding: 5px;
+    color: white;
+    border-radius: 5px;
+  }
+}
+
+#ajax-contact-form .custom-switch .custom-switch-input:checked+.custom-switch-btn {
+  background: #FAB100 !important;
+}
+
+.font-size-19 {
+  font-size: 19px;
+  width: 30px;
+  text-align: center;
+}
+
+
+/***************ANIMATIONS*************/
+
+.fade-in-2 {
+  animation: fadein 2s;
+  -moz-animation: fadein 2s;
+  /* Firefox */
+  -webkit-animation: fadein 2s;
+  /* Safari and Chrome */
+  -o-animation: fadein 2s;
+  /* Opera */
+}
+
+
+.fade-in-4 {
+  animation: fadein 4s;
+  -moz-animation: fadein 4s;
+  /* Firefox */
+  -webkit-animation: fadein 4s;
+  /* Safari and Chrome */
+  -o-animation: fadein 4s;
+  /* Opera */
+}
+
+.fade-in-8 {
+  animation: fadein 8s;
+  -moz-animation: fadein 8s;
+  /* Firefox */
+  -webkit-animation: fadein 8s;
+  /* Safari and Chrome */
+  -o-animation: fadein 8s;
+  /* Opera */
+}
+
+
+/*@keyframes fadein {
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
+}
+*/
+
+.top-wrapper .rnt-paragraph {
+  color: white;
+  font-size: 12px;
+}
+
+
+.rnt-paragraph {
+  color: black;
+  font-size: 12px;
+}
+
+.ng-invalid-class {
+  border: 1px solid red !important;
+}
+
+.txt5,
+.txt3 {
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.owl-carousel-home .owl-nav {
+  position: absolute;
+  top: 43%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 35px;
+  color: white;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.owl-carousel-destiny .owl-nav {
+  position: absolute;
+  top: 43%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 35px;
+  color: black;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.owl-carousel-about-home .owl-nav {
+  position: absolute;
+  top: 43%;
+  width: 103%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 35px;
+  color: black;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.owl-carousel-about-us .owl-nav {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 35px;
+  color: black;
+}
+
+
+#content,
+#about {
+  padding-top: 0px !important;
+}
+
+.div-information-image {
+  position: absolute;
+  top: 63.5%;
+  width: 100%;
+  text-align: center;
+}
+
+.icon-whatsapp {
+  background-color: #F6AE00;
+  padding: 5px;
+  color: white;
+  border-radius: 5px;
+}
+
+#google_map {
+  height: 500px
+}
+
+.bg-fix {
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.contact1 a {
+  text-decoration: none;
+}
+
+
+.not-front .top2-wrapper {
+  border-bottom: 1px solid #fafafa;
+}
+
+.booking-wrapper {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  bottom: 14%;
+  z-index: 5;
+}
+
+.custom-style-label {
+  position: initial !important;
+}
+
+/***CUSTOM ANIMATIONS****/
+
+
+
+/*********************TEXT********************/
+
+.text-focus-in:hover {
+  -webkit-animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+@-webkit-keyframes text-focus-in {
+  0% {
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes text-focus-in {
+  0% {
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.hover-general {
+  transition: all 0.5s;
+}
+
+
+.hover-general:hover {
+  transform: scale(1.06);
+  cursor: pointer
+}
+
+.top-wrapper-dark {
+  position: initial;
+  width: 100%;
+  z-index: 10;
+}
+
+.top-wrapper-dark .navbar_ .navbar-nav>li>.nav-link {
+  color: black !important;
+}
+
+.ui-datepicker .ui-datepicker-header {
+  background: #FAB100 !important;
+  color: white;
+  border: 1px solid transparent !important;
+}
+
+a.ui-state-default {
+  background: #FAB100 !important;
+  color: white !important;
+  font-weight: bold !important;
+}
+
+.ui-datepicker-prev:hover,
+.ui-datepicker-next:hover {
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  cursor: pointer;
+}
+
+#rooms {
+  padding: 50px 0 10px !important;
+
+}
+
+.row-tab a.nav-link {
+  text-decoration: none !important;
+}
+
+
+.form-control:focus {
+  outline: none !important;
+  box-shadow: none;
+}
+
+
+@media (max-width: 576px) {
+  .daterangepicker.drop-up {
+    left: 15% !important;
+    top: 2% !important;
+  }
+
+}
+
+
+.tracking-in-expand-fwd ol {
+  padding-left: 1rem !important;
+}
+
+.border-radius-custom {
+  border-radius: 2px;
+  padding: 0.1rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.box-shadow-custom {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important;
+}
+
+
+/*********************TEXT********************/
+
+
+/****ELEMENTS****/
+.rotate-in-center:hover {
+  -webkit-animation: rotate-in-center 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: rotate-in-center 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+/* ----------------------------------------------
+ * Generated by Animista on 2020-6-20 4:11:43
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+/**
+ * ----------------------------------------
+ * animation rotate-in-center
+ * ----------------------------------------
+ */
+@-webkit-keyframes rotate-in-center {
+  0% {
+    -webkit-transform: rotate(-360deg);
+    transform: rotate(-360deg);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+    opacity: 1;
+  }
+}
+
+@keyframes rotate-in-center {
+  0% {
+    -webkit-transform: rotate(-360deg);
+    transform: rotate(-360deg);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+    opacity: 1;
+  }
+}
+
+.rotate-in-diag-1:hover {
+  -webkit-animation: rotate-in-diag-1 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: rotate-in-diag-1 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+
+/* ----------------------------------------------
+ * Generated by Animista on 2020-6-20 4:20:56
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+/**
+ * ----------------------------------------
+ * animation rotate-in-diag-1
+ * ----------------------------------------
+ */
+@-webkit-keyframes rotate-in-diag-1 {
+  0% {
+    -webkit-transform: rotate3d(1, 1, 0, -360deg);
+    transform: rotate3d(1, 1, 0, -360deg);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: rotate3d(1, 1, 0, 0deg);
+    transform: rotate3d(1, 1, 0, 0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes rotate-in-diag-1 {
+  0% {
+    -webkit-transform: rotate3d(1, 1, 0, -360deg);
+    transform: rotate3d(1, 1, 0, -360deg);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: rotate3d(1, 1, 0, 0deg);
+    transform: rotate3d(1, 1, 0, 0deg);
+    opacity: 1;
+  }
+}
+
+
+.shake-top {
+  cursor: pointer;
+}
+
+.shake-top:hover {
+  -webkit-animation: shake-top 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+  animation: shake-top 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+}
+
+
+/* ----------------------------------------------
+ * Generated by Animista on 2020-6-21 8:20:29
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+/**
+ * ----------------------------------------
+ * animation shake-top
+ * ----------------------------------------
+ */
+@-webkit-keyframes shake-top {
+
+  0%,
+  100% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transform-origin: 50% 0;
+    transform-origin: 50% 0;
+  }
+
+  10% {
+    -webkit-transform: rotate(2deg);
+    transform: rotate(2deg);
+  }
+
+  20%,
+  40%,
+  60% {
+    -webkit-transform: rotate(-4deg);
+    transform: rotate(-4deg);
+  }
+
+  30%,
+  50%,
+  70% {
+    -webkit-transform: rotate(4deg);
+    transform: rotate(4deg);
+  }
+
+  80% {
+    -webkit-transform: rotate(-2deg);
+    transform: rotate(-2deg);
+  }
+
+  90% {
+    -webkit-transform: rotate(2deg);
+    transform: rotate(2deg);
+  }
+}
+
+@keyframes shake-top {
+
+  0%,
+  100% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transform-origin: 50% 0;
+    transform-origin: 50% 0;
+  }
+
+  10% {
+    -webkit-transform: rotate(2deg);
+    transform: rotate(2deg);
+  }
+
+  20%,
+  40%,
+  60% {
+    -webkit-transform: rotate(-4deg);
+    transform: rotate(-4deg);
+  }
+
+  30%,
+  50%,
+  70% {
+    -webkit-transform: rotate(4deg);
+    transform: rotate(4deg);
+  }
+
+  80% {
+    -webkit-transform: rotate(-2deg);
+    transform: rotate(-2deg);
+  }
+
+  90% {
+    -webkit-transform: rotate(2deg);
+    transform: rotate(2deg);
+  }
+}
+
+
+
+
+
+
+.tracking-in-expand-fwd {
+  -webkit-animation: tracking-in-expand-fwd 2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  animation: tracking-in-expand-fwd 2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}
+
+
+/* ----------------------------------------------
+ * Generated by Animista on 2020-6-24 20:1:47
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+/**
+ * ----------------------------------------
+ * animation tracking-in-expand-fwd
+ * ----------------------------------------
+ */
+@-webkit-keyframes tracking-in-expand-fwd {
+  0% {
+    letter-spacing: -0.5em;
+    -webkit-transform: translateZ(-700px);
+    transform: translateZ(-700px);
+    opacity: 0;
+  }
+
+  40% {
+    opacity: 0.6;
+  }
+
+  100% {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    opacity: 1;
+  }
+}
+
+@keyframes tracking-in-expand-fwd {
+  0% {
+    letter-spacing: -0.5em;
+    -webkit-transform: translateZ(-700px);
+    transform: translateZ(-700px);
+    opacity: 0;
+  }
+
+  40% {
+    opacity: 0.6;
+  }
+
+  100% {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    opacity: 1;
+  }
+}
+
+
+
+.text-focus-in {
+  -webkit-animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+@-webkit-keyframes text-focus-in {
+  0% {
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes text-focus-in {
+  0% {
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+
+.kenburns-bottom {
+  cursor: pointer;
+}
+
+
+
+.kenburns-bottom:hover {
+  -webkit-animation: kenburns-bottom 5s ease-out both;
+  animation: kenburns-bottom 5s ease-out both;
+}
+
+
+@-webkit-keyframes kenburns-bottom {
+  0% {
+    -webkit-transform: scale(1) translateY(0);
+    transform: scale(1) translateY(0);
+    -webkit-transform-origin: 50% 84%;
+    transform-origin: 50% 84%;
+  }
+
+  100% {
+    -webkit-transform: scale(1.25) translateY(15px);
+    transform: scale(1.25) translateY(15px);
+    -webkit-transform-origin: bottom;
+    transform-origin: bottom;
+  }
+}
+
+@keyframes kenburns-bottom {
+  0% {
+    -webkit-transform: scale(1) translateY(0);
+    transform: scale(1) translateY(0);
+    -webkit-transform-origin: 50% 84%;
+    transform-origin: 50% 84%;
+  }
+
+  100% {
+    -webkit-transform: scale(1.25) translateY(15px);
+    transform: scale(1.25) translateY(15px);
+    -webkit-transform-origin: bottom;
+    transform-origin: bottom;
+  }
+}
+
+.btn-form1-submit:hover {
+  background: #0073b7;
+  color: white;
+}
+
+@media (max-width: 576px) {
+  .title-custom {
+    font-size: 12px !important;
+  }
+}
+
+/****ELEMENTS****/

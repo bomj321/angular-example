@@ -1,0 +1,55 @@
+<div class="modal-header bg-orange">
+  <h4 class="modal-title text-white font-weight-bold">Servicios</h4>
+</div>
+
+<div class="modal-body">
+
+
+  <div class="container" *ngIf="!loading">
+    <div class="row">
+
+      <div class="col-12" *ngIf="hotelInformation?.mainServices?.length > 0">
+        <div class="row">
+          <div class="hover-general col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 text-center mb-3" *ngFor="let mainService of hotelInformation.mainServices">
+            <img class="w-25" [src]="server + '/' + mainService.hotelService.urlImage">
+            <p class="paragraph-service">{{ mainService.hotelService.name }}</p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-12" *ngIf="hotelInformation?.otherServices?.length > 0">
+        <div class="row">
+          <div class="hover-general col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 text-center mb-3" *ngFor="let otherService of hotelInformation.otherServices">
+            <img class="w-25 img-carousel" [src]="server + otherService.hotelService.urlImage">
+            <p class="paragraph-service">{{ otherService.hotelService.name }}</p>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+
+  <div *ngIf="loading">
+
+    <div class="row">
+      <div class="col-6 p-3"><div class="bg-loading"></div></div>
+      <div class="col-6 p-3"><div class="bg-loading"></div></div>
+      <div class="col-6 p-3"><div class="bg-loading"></div></div>
+      <div class="col-6 p-3"><div class="bg-loading"></div></div>
+      <div class="col-6 p-3"><div class="bg-loading"></div></div>
+      <div class="col-6 p-3"><div class="bg-loading"></div></div>
+    </div>
+
+  </div>
+
+
+</div>
+
+<ngx-loading [show]="loading" [config]="{fullScreenBackdrop: true }"></ngx-loading>
+
+<div class="modal-footer justify-content-center">
+  <button type="button" class="btn btn-danger" (click)="close()">Cerrar</button>
+</div>

@@ -1,0 +1,275 @@
+ "use strict";
+
+    /*----------------------------------------------------*/
+// Select2
+    /*----------------------------------------------------*/
+
+
+
+   
+
+    /*----------------------------------------------------*/
+// Search.
+    /*----------------------------------------------------*/
+    $(document).on('click', '.search-open', function (event) {
+        $('body').addClass('search-opened');
+        event.preventDefault();
+    });
+
+    $(document).on('click', '.search-close', function (event) {
+        $('body').removeClass('search-opened');
+        event.preventDefault();
+    });
+
+    /*----------------------------------------------------*/
+// Superfish menu.
+    /*----------------------------------------------------*/
+    $('.sf-menu').superfish();
+
+    /*----------------------------------------------------*/
+
+// Fancybox
+    /*----------------------------------------------------*/
+    $("a.popup-link").fancybox();
+
+
+    /*----------------------------------------------------*/
+// Datapicker
+    /*----------------------------------------------------*/
+ 
+    /* Inicialización en español para la extensión 'UI date picker' para jQuery. */
+    /* Traducido por Vester (xvester@gmail.com). */
+    ( function( factory ) {
+        if ( typeof define === "function" && define.amd ) {
+
+            // AMD. Register as an anonymous module.
+            define( [ "../widgets/datepicker" ], factory );
+        } else {
+
+            // Browser globals
+            factory( jQuery.datepicker );
+        }
+    }( function( datepicker ) {
+
+    datepicker.regional.es = {
+        closeText: "Cerrar",
+        prevText: "&#x3C;Ant",
+        nextText: "Sig&#x3E;",
+        currentText: "Hoy",
+        monthNames: [ "Enero","Febrero","Marzo","Abril","Mayo","Junio",
+        "Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre" ],
+        monthNamesShort: [ "ene","feb","mar","abr","may","jun",
+        "jul","ago","sep","oct","nov","dic" ],
+        dayNames: [ "Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado" ],
+        dayNamesShort: [ "dom","lun","mar","mié","jue","vie","sáb" ],
+        dayNamesMin: [ "D","L","M","X","J","V","S" ],
+        weekHeader: "Sm",
+        dateFormat: "dd/mm/yy",
+        firstDay: 1,
+        isRTL: false,
+        showMonthAfterYear: false,
+        yearSuffix: "" };
+    datepicker.setDefaults( datepicker.regional.es );
+
+    return datepicker.regional.es;
+
+    } ) );
+ /*----------------------------------------------------*/
+// Datapicker
+  /*----------------------------------------------------*/ 
+ 
+    /*----------------------------------------------------*/
+// owlCarousel
+    /*----------------------------------------------------*/
+   /* $('.owl-carousel-wide').owlCarousel({
+        items: 1,
+        loop: true,
+        margin: 50,
+        autoplay: true,
+        autoplayTimeout: 8000
+    });*/
+
+    $('.owl-carousel-testimonials').owlCarousel({
+        center: true,
+        items: 1,
+        loop: true,
+        margin: 30,
+        responsive: {
+            800: {
+                items: 3
+            }
+        }
+    });
+
+    /*----------------------------------------------------*/
+    // slick
+    /*----------------------------------------------------*/
+    // About.
+   /*$('.slider-for').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        fade: true,
+        asNavFor: '.slider-nav',
+        adaptiveHeight: true,
+        autoplay: true,
+        autoplaySpeed: 5000
+    });
+
+    $('.slider-nav').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        asNavFor: '.slider-for',
+        dots: false,
+        centerMode: false,
+        focusOnSelect: false,
+        adaptiveHeight: true,
+        fade: true,
+        autoplay: true,
+        autoplaySpeed: 5000
+    });*/
+
+
+    /*----------------------------------------------------*/
+    // Round animation.
+    /*----------------------------------------------------*/
+    /*$('.yjsg-round-progress').appear(function () {
+        var elem = $(this);
+        var animationDelay = elem.data('animation-delay');
+        if (animationDelay) {
+            setTimeout(function () {
+                $(elem).yjsgroundprogress();
+            }, animationDelay);
+        } else {
+            $(elem).yjsgroundprogress();
+        }
+    });*/
+
+    /*----------------------------------------------------*/
+    // Tabs.
+    /*----------------------------------------------------*/
+    $(document).on('click', '.tabs a', function (e) {
+        e.preventDefault();
+        var $this = $(this),
+            tabgroup = '#' + $this.parents('.tabs').data('tabgroup'),
+            others = $this.closest('li').siblings(),
+            target = $this.attr('href');
+
+        others.removeClass('active');
+        $this.closest('li').addClass('active');
+        $(tabgroup).children('div').hide();
+        $(target).show();
+    });
+    $('.tabs .active a').trigger('click');
+
+    /*----------------------------------------------------*/
+    // Sticky.
+    /*----------------------------------------------------*/
+    var o = $("body:not(.menu-scroll)").find("#top-inner");
+    if (o.length > 0) {
+        o.sticky({
+            topSpacing: 0,
+            getWidthFrom: 'body',
+            responsiveWidth: true
+        });
+    }
+
+
+    /*----------------------------------------------------*/
+    // MENU SMOOTH SCROLLING
+    /*----------------------------------------------------*/
+    /*$(document).on('click', ".navbar-nav a", function (event) {
+
+        //$(".navbar_ .nav a a").removeClass('active');
+        //$(this).addClass('active');
+        // var headerH = $('#top1').outerHeight();
+        var headerH = $('#top-inner').outerHeight();
+
+        if ($(this).attr("href") == "#home") {
+            $("html, body").animate({
+                scrollTop: 0 + 'px'
+                // scrollTop: $($(this).attr("href")).offset().top + 'px'
+            }, {
+                duration: 1200,
+                easing: "easeInOutExpo"
+            });
+        }
+        else {
+            $("html, body").animate({
+                scrollTop: $($(this).attr("href")).offset().top - headerH + 'px'
+                // scrollTop: $($(this).attr("href")).offset().top + 'px'
+            }, {
+                duration: 1200,
+                easing: "easeInOutExpo"
+            });
+        }
+
+        $(this).blur();
+
+
+        event.preventDefault();
+    });*/
+
+
+      
+
+     /*----------------------------------------------------*/
+    // MENU SMOOTH SCROLLING
+    /*----------------------------------------------------*/
+
+    $('.loading').remove();
+
+    // Details.
+    /*$('.slider-for2').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        fade: true,
+        asNavFor: '.slider-nav2',
+        adaptiveHeight: true,
+        autoplay: true,
+        autoplaySpeed: 5000
+    });
+
+    $('.slider-nav2').slick({
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        arrows: false,
+        asNavFor: '.slider-for2',
+        dots: false,
+        centerMode: false,
+        focusOnSelect: true,
+        adaptiveHeight: false,
+        fade: false,
+        autoplay: true,
+        autoplaySpeed: 5000,
+        vertical: true,
+        verticalSwiping: true,
+        responsive: [
+            {
+                breakpoint: 767,
+                settings: {
+                    vertical: false,
+                    slidesToShow: 4,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 575,
+                settings: {
+                    vertical: false,
+                    slidesToShow: 3,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    vertical: false,
+                    slidesToShow: 2,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    });*/

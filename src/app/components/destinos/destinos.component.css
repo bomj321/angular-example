@@ -1,0 +1,28 @@
+.div-img img
+{
+    width: 30em;
+    height: 30em;
+    border-radius: 200px;
+}
+
+.div-link
+{
+    margin-top: 15%;
+    margin-bottom: 15%;
+}
+
+.div-link a
+{
+    
+    text-align: center;
+    text-decoration: underline;
+    background: #0073b7;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 11px 3px;
+    border-radius: 3px;
+    font-size: 13px;
+    transition: all 0.3s ease-out;
+}
+
+.div-link a:hover{background: #fab100; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);}

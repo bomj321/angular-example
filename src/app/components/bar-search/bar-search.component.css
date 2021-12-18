@@ -1,0 +1,26 @@
+select.select-custom
+{
+    height: 66px !important;
+    border-radius: 0px !important;
+    border: 1px solid transparent !important;
+}
+
+.btn-form1-submit
+{
+    height: 66px;
+}
+@media (max-width: 767px) 
+{ 
+ 
+    .col3.c3
+    {
+        border-bottom: 1px solid #dddddd;
+    }
+
+}
+
+.input1_inner input 
+{
+    height: 65px !important;
+
+}

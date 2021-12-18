@@ -1,0 +1,177 @@
+<div class="not-front page-reservation" *ngIf="informationsOurRoomSection?.length > 0 && establismentInformation">
+
+    <div id="main" class="fade-in-8">
+        <app-search-wrapper [establismentInformation]="establismentInformation"></app-search-wrapper>
+
+
+        <app-top-wrapper-home [establismentInformation]="establismentInformation"></app-top-wrapper-home>
+
+
+        <div class="breadcrumbs1_wrapper mt-3">
+            <div class="container" *ngIf="conditionalForView">
+                <div class="breadcrumbs1"><a
+                        [routerLink]="'/' + establismentInformation.token + '/our-rooms'">{{ 'OURROOMSPAGE.RESERVATIONS' | translate }}</a><span>|</span>{{ 'OURROOMSPAGE.OUR_RESERVARTIONS' | translate }}
+                </div>
+            </div>
+
+            <div class="container" *ngIf="!conditionalForView">
+                <div class="breadcrumbs1"><a
+                        [routerLink]="'/' + establismentInformation.token">{{ 'OURROOMSPAGE.HOME' | translate }}</a><span>|</span>Habitaciones
+                </div>
+            </div>
+        </div>
+        <div id="content">
+            <div class="container">
+
+                <div class="title1">{{ 'OURROOMSPAGE.ACCOMMODATION_MONTH' | translate }}</div>
+
+                <div class="title2">Descubre las confortables habitaciones que tenemos a tu disposición</div>
+
+                <div class="booking2-wrapper horizontal">
+                    <app-bar-search [establismentInformation]="establismentInformation"></app-bar-search>
+                </div>
+
+                <div id="second-tab-group" class="tabgroup">
+
+                    <div id="tabs2-2">
+
+                        <div class="room-wide-wrapper"
+                            *ngFor="let informationOurRoomSection of informationsOurRoomSection | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; let i=index">
+                            <div class="room-wide-inner" *ngIf="informationOurRoomSection.roomData.pricePerNight">
+                                <div class="room-wide clearfix">
+                                    <figure>
+                                        <ngx-gallery [options]="galleryOptions"
+                                            [images]="informationOurRoomSection.images"></ngx-gallery>
+                                    </figure>
+                                    <div class="caption" style="display: flow-root !important;">
+                                        <div class="room-wide-columns clearfix">
+                                            <div class="room-wide-left">
+                                                <div class="txt2">{{ 'OURROOMSPAGE.ACCOMMODATION' | translate }}
+                                                    {{ informationOurRoomSection.roomData.roomTypeHome.name }}</div>
+                                            </div>
+                                            <div class="room-wide-right">
+                                                <div class="room-wide-price">
+                                                    <div class="txt4">Desde
+                                                        <i *ngIf="establismentInformation.iva && establismentInformation.iva != 0 "
+                                                            class="fa fa-info-circle pink-color-icon" container="body"
+                                                            aria-hidden="true"
+                                                            ngbTooltip="Los ciudadanos de Colombia deberán abonar un 19% de IVA. Este impuesto no está incluido en el precio final."></i>
+
+                                                        <i *ngIf="establismentInformation.iva && establismentInformation.iva == 0 "
+                                                            class="fa fa-info-circle pink-color-icon" container="body"
+                                                            aria-hidden="true"
+                                                            ngbTooltip="Para este servicio no aplica el cargo de impuestos."></i>
+                                                    </div>
+                                                    <div class="txt3">$
+                                                        {{  Math.ceil(informationOurRoomSection.roomData.pricePerNight.pricePerNightWithoutIva) | number:'':'es' }}
+                                                    </div>
+
+                                                    <span
+                                                        *ngIf="informationOurRoomSection.roomData.pricePerNight.iva == 0"
+                                                        class="badge text-white badge-CC0000">
+                                                        Excluido de IVA
+                                                    </span>
+
+                                                    <span class="badge text-white badge-FF8800"
+                                                        *ngIf="informationOurRoomSection.roomData.pricePerNight.iva != 0">
+                                                        Con impuestos incluídos
+                                                    </span>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <app-read-more
+                                            [text]="informationOurRoomSection.roomData.roomTypeHome.description + informationOurRoomSection.roomData.roomTypeHome.equipment">
+                                        </app-read-more>
+
+                                        <div>
+                                            <ng-container
+                                                *ngFor="let feature of informationOurRoomSection.roomData.roomTypeHome.features">
+
+                                                <p [ngClass]="{ 'box-shadow-custom' : feature.background && feature.background != '' }"
+                                                    [style.background-color]="feature.background"
+                                                    [style.color]="feature.color" class="border-radius-custom"
+                                                    (click)="openLink(feature.link)" style="display: inline-block;">
+
+                                                    <i [class]="feature.icon + ' mr-1'"></i>
+                                                    {{ feature.title }}: {{ feature.description }}
+
+                                                    <ng-container
+                                                        *ngIf="feature.link && feature.link.split('//')[1] != '' && feature.link.split('//')[1] != undefined && feature.link.split('//')[1] != null">
+
+
+
+                                                        <i ngbTooltip="Ir a link" class="ml-1 fa fa-external-link"
+                                                            aria-hidden="true"></i>
+
+                                                    </ng-container>
+
+                                                </p>
+                                                <br>
+
+                                            </ng-container>
+                                        </div>
+                                        <!-- <div class="txt5" [innerHTML]="informationOurRoomSection.roomData.roomTypeHome.description + informationOurRoomSection.roomData.roomTypeHome.equipment"></div>-->
+
+
+
+
+                                        <div class="row">
+                                            <div class="col-xl-6 col-lg-6 col-md-8 col-sm-12 col-12">
+                                                <div class="txt8">
+                                                    <ng-container
+                                                        *ngFor="let item of informationOurRoomSection.roomData.roomTypeHome.items | slice:0:5">
+                                                        <i class="{{ item.icon }}" aria-hidden="true"
+                                                            ngbTooltip="{{item.title}}"></i>
+
+                                                    </ng-container>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-6 col-lg-6 col-md-4 col-sm-12 col-12 mt-xl-0 mt-lg-0 mt-md-0 mt-sm-2 mt-2 btn-reservations">
+                                                <div class="txt9">
+                                                    <a (click)="setRoom(informationOurRoomSection)"
+                                                        style="cursor: pointer;">
+                                                        <span>
+                                                            RESERVAR
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                       
+
+
+
+
+
+
+
+
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <ngb-pagination [(page)]="page" [pageSize]="pageSize"
+                            [collectionSize]="informationsOurRoomSection.length"> </ngb-pagination>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <app-footer [establismentInformation]="establismentInformation"></app-footer>
+
+
+    </div>
+</div>
+
+<ngx-loading [show]="loading" [config]="{fullScreenBackdrop: true }"></ngx-loading>

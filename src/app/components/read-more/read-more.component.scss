@@ -1,0 +1,18 @@
+$color-primary: #00C851;
+$color-secondary: #0B4672;
+
+.full-text{
+	white-space: pre-wrap;
+	text-align: justify !important;
+    word-break: break-word;
+    font-size: 13px;
+}
+
+.link-read-more{
+	margin-bottom: 0px;
+}
+
+a.button, a.button:hover, button.button, button.button:hover{
+	background-color: $color-primary !important; color: #FFF;
+}
+

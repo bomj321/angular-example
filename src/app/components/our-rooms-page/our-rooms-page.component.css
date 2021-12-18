@@ -1,0 +1,113 @@
+.txt8 {
+  display: flex;
+}
+
+.txt8 i {
+  background-color: #f6ae00;
+  color: white;
+  font-size: 30px;
+  padding: 0.65rem;
+  border-radius: 8px;
+}
+
+.txt8 i {
+  margin-right: 9px;
+}
+
+.txt4 {
+  font-size: 0.85rem !important;
+}
+
+
+
+.icon-gallery {
+  color: #e91e63;
+  position: absolute;
+  cursor: pointer;
+  left: 31%;
+}
+
+.icon-gallery-img {
+  cursor: pointer;
+}
+
+.txt7-custom {
+  color: #3e3e3e;
+  letter-spacing: 1px;
+  padding-top: 5px;
+  margin-bottom: 20px;
+
+}
+
+
+
+@media (max-width: 1259.99px) {
+
+  .icon-gallery {
+    left: 39%;
+  }
+}
+
+
+@media (max-width: 1259.99px) {
+
+  .icon-gallery {
+    left: 39%;
+  }
+}
+
+
+@media (max-width: 991.99px) {
+
+  .icon-gallery {
+    left: 88%;
+  }
+}
+
+
+@media (max-width: 767.99px) {
+
+  .icon-gallery {
+    left: 85%;
+  }
+}
+
+
+@media (max-width: 455.99px) {
+
+  .icon-gallery {
+    left: 82%;
+  }
+}
+
+
+@media (max-width: 397.99px) {
+
+  .icon-gallery {
+    left: 82%;
+  }
+}
+
+@media (max-width: 373px) {
+
+  .txt8 i {
+    font-size: 21px !important;
+
+  }
+}
+
+
+@media (max-width: 355.99px) {
+
+  .icon-gallery {
+    left: 79%;
+  }
+}
+
+
+@media (max-width: 335.99px) {
+
+  .icon-gallery {
+    left: 74%;
+  }
+}

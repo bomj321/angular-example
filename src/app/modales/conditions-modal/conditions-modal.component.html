@@ -1,0 +1,66 @@
+<ng-container *ngIf="!loading">
+
+  <div class="modal-header bg-danger">
+    <h4 class="modal-title text-white font-weight-bold">{{ title }}</h4>
+  </div>
+
+  <div class="modal-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+
+          <div class="text-center" style="margin-top: 15%; margin-bottom: 15%;" *ngIf="termsConditions?.content.length == 0">
+            <i class="fa fa-warning fa-4x mb-3"></i>
+            <h5 class="text-muted">Actualmente no se dispone de términos y politícas de tratamiento de datos.</h5>
+          </div>
+
+
+          <div class="text-justify" style="margin-top: 5%; margin-bottom: 5%;" *ngIf="termsConditions?.content.length > 0">
+
+            <ng-container *ngIf="termsConditions.content[0].termsConditions && type == 1">
+              <p [innerHTML]="termsConditions.content[0].termsConditions"></p>
+            </ng-container>
+
+            <ng-container *ngIf="!termsConditions.content[0].termsConditions && type == 1">
+              <div class="text-center" style="margin-top: 15%; margin-bottom: 15%;" *ngIf="termsConditions?.content.length == 0">
+                <i class="fa fa-warning fa-4x mb-3"></i>
+                <h5 class="text-muted">Actualmente no se dispone de términos y condiciones</h5>
+              </div>
+            </ng-container>
+
+            <ng-container *ngIf="termsConditions.content[0].dataProcessingPolicy && type == 2">
+              <p *ngIf="type == 2" [innerHTML]="termsConditions.content[0].dataProcessingPolicy"></p> 
+            </ng-container>
+
+            <ng-container *ngIf="!termsConditions.content[0].dataProcessingPolicy && type == 2">
+              <div class="text-center" style="margin-top: 15%; margin-bottom: 15%;" *ngIf="dataProcessingPolicy?.content.length == 0">
+                <i class="fa fa-warning fa-4x mb-3"></i>
+                <h5 class="text-muted">Actualmente no se dispone de políticas de tratamiento de datos</h5>
+              </div>
+            </ng-container>
+
+            
+            
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer justify-content-center">
+    <button type="button" class="btn btn-save-conditions" data-dismiss="modal"
+      (click)="acceptTerms()">Aceptar</button>
+    <button type="button" class="btn btn-danger" (click)="close()">Cerrar</button>
+  </div>
+</ng-container>
+
+
+
+<div class="row" *ngIf="loading">
+  <div class="col-12">
+    <div class="text-center" style="margin-top: 15%; margin-bottom: 15%;">
+      <i style="font-size: 50px;" class="fa fa-spin fa-spinner"></i>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+.subtitle-services
+{
+	font-family: 'Oswald', sans-serif;
+	font-size: 32px;
+	color: #333333;
+	line-height: 1.2;
+	padding-bottom: 30px;
+}
+
+.subtitle-other-services
+{
+	background: #0073b7;
+	color: white;
+	font-weight: bold;
+	font-size: 0.8em;
+	padding: 0.5em;
+	border-radius: 5px;
+
+}
+
+.title-img-carousel
+{
+	font-size: 15px
+}
+
+.img-service
+{
+	width: 75px;
+	height: 75px;
+}
+
+.hover-general:hover .subtitle-other-services
+{
+	transition: all 500ms;
+	background-color: #F6AE00;
+}
+
+
+
+
+@media (max-width: 576px) 
+{    
+
+	button.bg-0073b7
+	{
+		width: 100%;
+	}
+}
+

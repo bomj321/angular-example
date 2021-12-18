@@ -1,0 +1,50 @@
+<div id="about" class="mt-5">
+    <div class="container" *ngIf="informationHotelFooter">
+
+        <div class="title1">{{ informationHotelFooter.name| uppercase }}</div>
+
+        <div class="title2" [innerHTML]="informationHotelFooter['description']"> </div>
+
+
+        <div class="about-slider-wrapper clearfix">
+            <owl-carousel-o [options]="customOptions"  class="owl-carousel-about-home">
+
+                <ng-container *ngFor="let hotelInfo of imageArrayCarrusel">
+                    <ng-template carouselSlide [id]="hotelInfo.description">
+                        <div class="row">
+                            <div class="col-md-6 pl-3">
+                                <img src="{{server + hotelInfo.urlImage}}"
+                                    style=" width: 100%; max-width: 482px; height: auto;" alt="">
+
+                            </div>
+                            <div class="col-md-6 about-slider-right p-3">
+                                <div class="slider-nav">
+                                    <div class="txt1">
+                                        {{hotelInfo.title}}
+                                    </div>
+                                    <div [innerHTML]="hotelInfo.description" class="txt2">
+
+                                    </div>
+                                    <div class="txt3">
+                                        {{hotelInfo.affiliate['legalRepresentative']}}
+                                    </div>
+                                    <div class="txt4">
+                                        {{hotelInfo.position}}
+                                    </div>
+                                    <div class="txt5">
+                                        {{hotelInfo.affiliate['tradename']}}
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </ng-template>
+                </ng-container>
+
+            </owl-carousel-o>
+
+        </div>
+
+    </div>
+</div>

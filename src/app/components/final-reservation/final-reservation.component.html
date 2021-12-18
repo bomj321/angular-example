@@ -1,0 +1,103 @@
+<ng-container class="not-front page-reservation">
+
+ <div id="main">
+   <app-search-wrapper [establismentInformation]="establismentInformation"></app-search-wrapper>
+
+   <div class="top-wrapper">
+       <div class="top-inner" id="top-inner">
+           <app-top-wrapper-home [establismentInformation]="establismentInformation"></app-top-wrapper-home>
+        </div>
+   </div>
+
+    <div class="breadcrumbs1_wrapper mt-3">
+        <div class="container" *ngIf="conditionalForView">
+            <div class="breadcrumbs1"><a routerLink="/our-rooms">Nuestras </a><span>|</span>Reservaciones</div>
+        </div>
+
+        <div class="container" *ngIf="!conditionalForView">
+            <div class="breadcrumbs1"><a href="/">Inicio</a><span>|</span>Reservacion Final</div>
+        </div>
+    </div>
+    <div id="content">
+        <div class="container">
+
+            <div class="title1">Detalles de la reserva</div>          
+
+            <div id="second-tab-group" class="tabgroup">
+                           
+                <div id="tabs2-2">
+
+                    <div class="row">
+                                <div class="col-lg-8 col-md-8 col-sm-8 col-12">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h2>Información personal</h2>
+                                        </div>
+                                    </div>
+                                    <form>
+                                          <div class="form-group">
+                                                <div class="row">
+                                                        <div class="col-6">
+                                                            <label for="customerFullname">Nombre completo</label>
+                                                            <input type="text" class="form-control" id="customerFullname" aria-describedby="emailHelp" placeholder="Ingrese nombre completo">
+                                                        </div>
+
+                                                         <div class="col-6">
+                                                            <label for="customerEmail">Email</label>
+                                                            <input type="email" class="form-control" id="customerEmail" aria-describedby="emailHelp" placeholder="Ingrese un correo">
+                                                        </div>
+                                                </div>
+                                          </div>
+                                           <div class="form-group">
+                                                <div class="row">
+                                                        <div class="col-6">
+                                                            <label for="customerCellPhone">Telefono fijo</label>
+                                                            <input type="text" class="form-control" id="customerCellPhone" aria-describedby="emailHelp" placeholder="Ingrese un telefono fijo">
+                                                        </div>
+
+                                                         <div class="col-6">
+                                                            <label for="customerPhone">Celular</label>
+                                                            <input type="text" class="form-control" id="customerPhone" aria-describedby="emailHelp" placeholder="Ingrese un telefono celular">
+                                                        </div>
+                                                </div>
+                                          </div>
+
+                                           <div class="form-group">
+                                                <div class="row">
+                                                        <div class="col-12">
+                                                            <label for="notes">Comentario adicional</label>
+                                                             <textarea class="form-control" id="notes" required placeholder="Ingrese un comentario"></textarea>                                                            
+                                                        </div>
+
+                                                </div>
+                                          </div>
+                                          <div class="row"> 
+                                            <div class="col-12 text-lg-left text-md-left text-sm-left text-center">
+                                                <button type="submit" class="btn btn-primary">Reservar</button>
+                                            </div>
+                                                
+                                          </div>
+                                    </form>
+                                </div>
+
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-12">
+                                   <div class="card w-100">
+                                      <div class="card-body">
+                                        <h5 class="card-title">Su estadía:</h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <a href="#" class="card-link">Card link</a>
+                                        <a href="#" class="card-link">Another link</a>
+                                      </div>
+                                </div>
+                                </div>
+                    </div>
+                </div>
+            </div>   
+        </div>
+    </div>
+
+   <app-footer [establismentInformation]="establismentInformation"></app-footer>
+
+
+</div>
+</ng-container>

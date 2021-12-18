@@ -1,0 +1,830 @@
+<div class="not-front page-reservation">
+
+    <div id="main" class="fade-in-8">
+        <app-search-wrapper *ngIf="establismentInformation" [establismentInformation]="establismentInformation">
+        </app-search-wrapper>
+
+
+        <app-top-wrapper-home *ngIf="establismentInformation" [establismentInformation]="establismentInformation">
+        </app-top-wrapper-home>
+
+
+        <div class="breadcrumbs1_wrapper mt-3">
+            <div class="container" *ngIf="conditionalForView">
+                <div class="breadcrumbs1" *ngIf="establismentInformation"><a
+                        [routerLink]="'/' + establismentInformation.token + '/our-rooms'">{{ 'OURROOMSDISPONIBILITY.RESERVATIONS' | translate }}</a><span>|</span>
+                    Habitaciones disponibles
+                </div>
+            </div>
+
+            <div class="container" *ngIf="!conditionalForView">
+                <div class="breadcrumbs1" *ngIf="establismentInformation"><a
+                        [routerLink]="'/' + establismentInformation.token">{{ 'OURROOMSDISPONIBILITY.HOME' | translate }}</a><span>|</span>{{ 'OURROOMSDISPONIBILITY.ACCOMMODATION_MONTH' | translate }}
+                </div>
+            </div>
+        </div>
+        <div id="content">
+            <div class="container">
+
+                <div class="title1">{{ 'OURROOMSDISPONIBILITY.ACCOMMODATIONS_AVAILABLE' | translate }}</div>
+
+                <div class="title2">Descubre las confortables habitaciones que tenemos a tu disposición</div>
+
+                <div class="booking2-wrapper horizontal">
+                    <app-bar-search *ngIf="establismentInformation" [roomTypeAvailable]="roomTypeAvailable"
+                        [promotionCode]="promoCode" [numberGuests]="routeNumberAdult"
+                        [establismentInformation]="establismentInformation" [routeCheckIn]="routeCheckIn"
+                        [routeCheckOut]="routeCheckOut"></app-bar-search>
+                </div>
+
+                <!--------------STEPPER----------------------->
+                <mat-horizontal-stepper linear #stepper>
+                    <!---------------------------------FIRST STEPPER-------------------------------->
+                    <mat-step [completed]="roomsSelectedArray.length > 0 && !blockAlertNumberGuests"
+                        [editable]="isEditable">
+                        <ng-template matStepLabel>Reservar</ng-template>
+
+                        <div class="row">
+
+
+                            <div
+                                class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12 order-xl-1 order-lg-1 order-md-12 order-sm-12 order-12">
+
+                                <div id="second-tab-group" class="tabgroup">
+                                    <div id="tabs2-2">
+                                        <ng-container *ngIf="roomsAvailables && roomsAvailables.length > 0">
+
+                                            <div class="room-wide-wrapper"
+                                                *ngFor="let roomsAvailable of roomsAvailables | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                                                <div class="room-wide-inner"
+                                                    *ngIf="roomsAvailable.roomInformation.pricePerNight.pricePerNightWithoutIva">
+                                                    <div class="room-wide clearfix">
+                                                        <figure>
+                                                            <ngx-gallery [options]="galleryOptions"
+                                                                [images]="roomsAvailable.images">
+                                                            </ngx-gallery>
+                                                        </figure>
+                                                        <div class="caption" style="display: flow-root !important;">
+                                                            <div class="room-wide-columns clearfix">
+                                                                <div class="room-wide-left">
+                                                                    <div class="txt2 text-acommodation-name">
+                                                                        {{ 'OURROOMSDISPONIBILITY.ACCOMMODATION' | translate }}
+                                                                        {{ roomsAvailable.roomInformation.roomTypeHome.name }}
+
+                                                                        <span
+                                                                            class="mt-1 ml-1 badge badge-9933CC text-white"
+                                                                            style="text-transform: none !important;">Máx.
+                                                                            huéspedes:
+                                                                            {{ roomsAvailable.otherData.roomTypeDetail.roomType.capacity }}</span>
+
+                                                                        <span
+                                                                            *ngIf="roomsAvailable.roomInformation.pricePerNight.iva == 0"
+                                                                            class="badge text-white badge-CC0000 ml-1"
+                                                                            style="text-transform: none !important;">
+                                                                            Excluido de IVA
+                                                                        </span>
+
+                                                                        <span class="badge text-white badge-FF8800 ml-1"
+                                                                            *ngIf="roomsAvailable.roomInformation.pricePerNight.iva != 0"
+                                                                            style="text-transform: none !important;">
+                                                                            Con impuestos incluídos
+                                                                        </span>
+
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="room-wide-right">
+                                                                    <div class="room-wide-price">
+                                                                        <div class="txt4 ">
+                                                                            Desde
+                                                                        </div>
+                                                                        <div class="txt3 text-acommodation-price">
+                                                                            $
+                                                                            {{ Math.ceil(((roomsAvailable.roomInformation.pricePerNight.pricePerNightWithoutIva))) | number:'':'es' }}
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <!--<app-read-more
+                                                            [text]="roomsAvailable.roomInformation.roomTypeHome.description + roomsAvailable.otherData.roomTypeDetail.roomType.equipment">
+                                                        </app-read-more>-->
+
+                                                            <div class="txt5"
+                                                                [innerHTML]="roomsAvailable.roomInformation.roomTypeHome.description + roomsAvailable.otherData.roomTypeDetail.roomType.equipment">
+                                                            </div>
+
+                                                            <div class="txt5 pt-0">
+
+                                                                <ng-container
+                                                                    *ngFor="let feature of roomsAvailable.features">
+
+                                                                    <p [ngClass]="{ 'box-shadow-custom' : feature.background && feature.background != '' }"
+                                                                        [style.background-color]="feature.background"
+                                                                        [style.color]="feature.color"
+                                                                        class="border-radius-custom"
+                                                                        (click)="openLink(feature.link)"
+                                                                        style="display: inline-block;">
+
+                                                                        <i [class]="feature.icon + ' mr-1'"></i>
+                                                                        {{ feature.title }}:
+                                                                        {{ feature.description }}
+
+                                                                        <ng-container
+                                                                            *ngIf="feature.link && feature.link.split('//')[1] != '' && feature.link.split('//')[1] != undefined && feature.link.split('//')[1] != null">
+
+
+
+                                                                            <i ngbTooltip="Ir a link"
+                                                                                style="cursor: pointer;"
+                                                                                class="ml-1 fa fa-external-link"
+                                                                                aria-hidden="true"></i>
+
+                                                                        </ng-container>
+                                                                    </p>
+
+                                                                    <br>
+
+
+                                                                </ng-container>
+
+                                                            </div>
+
+
+                                                            <div class="room-wide-columns clearfix">
+                                                                <div class="room-wide-left w-100 p-0">
+
+                                                                    <div class="row">
+
+                                                                        <div
+                                                                            class="col-lg-5 col-md-5 col-sm-12 col-12 div-rows-information txt8">
+                                                                            <ng-container
+                                                                                *ngFor="let item of roomsAvailable.roomInformation.roomTypeHome.items | slice:0:5">
+                                                                                <i class="{{ item.icon }}"
+                                                                                    aria-hidden="true"
+                                                                                    ngbTooltip="{{item.title}}"></i>
+
+                                                                            </ng-container>
+
+                                                                        </div>
+
+
+                                                                        <div
+                                                                            class="col-lg-4 col-md-4 col-sm-12 col-12 div-guests div-rows-information">
+                                                                            <h5 class="text-center">
+                                                                                {{ 'OURROOMSDISPONIBILITY.GUESTS' | translate }}
+                                                                            </h5>
+                                                                            <app-input-number
+                                                                                [max]="roomsAvailable.roomInformation.roomTypeHome.capacity"
+                                                                                [readonly]="readonly"
+                                                                                [id]="roomsAvailable.roomInformation.roomTypeHome.id">
+                                                                            </app-input-number>
+                                                                        </div>
+
+
+
+                                                                        <div
+                                                                            class="col-lg-3 col-md-3 col-sm-12 col-12 div-rows-information">
+                                                                            <button type="button"
+                                                                                (click)="addRoom(roomsAvailable.roomInformation.roomTypeHome.id, roomsAvailable)"
+                                                                                class="btn btn-default btn-cf-submit w-100 mt-0">{{ 'OURROOMSDISPONIBILITY.ADD' | translate }}</button>
+                                                                        </div>
+
+
+                                                                    </div>
+
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <ngb-pagination [(page)]="page" [pageSize]="pageSize"
+                                                [collectionSize]="roomsAvailables.length">
+
+                                            </ngb-pagination>
+                                        </ng-container>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <!------------------------------------------- Widget Lateral --------------------------------------------------->
+                            <div class="col-lg-4 col-12 order-lg-last order-md-first order-first">
+                                <div class="card w-100 mb-2">
+                                    <div class="card-header bg-custom-reservation">
+                                        {{ 'OURROOMSDISPONIBILITY.YOUR_STAY' | translate }}
+                                    </div>
+                                    <div class="card-body" *ngIf="informationHotel">
+                                        <h5>{{ informationHotel.name  }}</h5>
+                                        <h6 class="font-weight-custom">
+                                            {{ informationHotel.commercialAddress  }}</h6>
+                                        <h6 class="font-weight-custom">(+57)
+                                            {{ informationHotel.cellPhone  }}</h6>
+
+                                        <p style="color: #FAB100;"> Llegada:
+                                            {{ routeCheckIn | date: 'mediumDate' }} - Salida:
+                                            {{ routeCheckOut | date: 'mediumDate' }}</p>
+
+                                        <ng-container *ngIf="roomsSelectedArray.length > 0">
+                                            <div *ngFor="let roomSelectedArray of roomsSelectedArray; let i=index">
+
+                                                <h5 class="card-title mt-2">
+                                                    {{ 'OURROOMSDISPONIBILITY.ACCOMMODATION_2' | translate }}
+                                                    {{ roomSelectedArray.informationRoomSelected.roomInformation.roomTypeHome.name }}
+                                                </h5>
+                                                <h6 class="card-subtitle mb-2 text-muted">
+                                                    {{ 'OURROOMSDISPONIBILITY.GUESTS' | translate }}:
+                                                    {{ roomSelectedArray.numberPersons }}</h6>
+
+
+                                                <h6 class="card-subtitle mb-2 text-muted" *ngIf="isNotColombian">
+                                                    {{ 'OURROOMSDISPONIBILITY.PRICE' | translate }}: $
+                                                    {{ (Math.ceil((roomSelectedArray.informationRoomSelected.roomInformation.pricePerNight.pricePerNightWithoutIva)) * dateDiff) | number:'':'es' }}
+                                                </h6>
+
+                                                <h6 class="card-subtitle mb-2 text-muted d-flex"
+                                                    *ngIf="!isNotColombian">
+                                                    {{ 'OURROOMSDISPONIBILITY.PRICE' | translate }}: $
+                                                    {{ (Math.ceil((roomSelectedArray.informationRoomSelected.roomInformation.pricePerNight.promoRate)) * dateDiff) | number:'':'es' }}
+
+                                                </h6>
+
+
+                                                <button type="button"
+                                                    (click)="deleteRoom(i,roomSelectedArray.informationRoomSelected.roomInformation.pricePerNight.pricePerNightWithoutIva * dateDiff,roomSelectedArray.informationRoomSelected.roomInformation.pricePerNight.promoRate * dateDiff)"
+                                                    *ngIf="!booleanPage"
+                                                    class="btn btn-default btn-cf-submit w-100 mb-4">{{ 'OURROOMSDISPONIBILITY.DELETE' | translate }}</button>
+                                            </div>
+
+                                            <span *ngIf="!isNotColombian && ivaHotel == 0"
+                                                class="badge badge-CC0000">Excluido de IVA</span>
+                                            <span class="badge badge-FF8800"
+                                                *ngIf="!isNotColombian && ivaHotel != 0">Con impuestos
+                                                incluídos</span>
+                                            <span class="badge badge badge-007E33" *ngIf="isNotColombian">Exento de
+                                                IVA</span>
+
+
+                                            <p class="text-center">
+                                                {{ 'OURROOMSDISPONIBILITY.PRICE_FOR' | translate }}
+                                                {{ totalGuest }}
+                                                {{ 'OURROOMSDISPONIBILITY.GUEST_CANT' | translate }},
+                                                {{ dateDiff }}
+                                                {{ 'OURROOMSDISPONIBILITY.NIGHT_CANT' | translate }}
+                                                {{ roomsSelectedArray.length }}
+                                                {{ 'OURROOMSDISPONIBILITY.ACCOMMODATION_CANT' | translate }}.
+                                            </p>
+
+
+
+
+                                            <div class="d-flex justify-content-center align-content-center">
+
+                                                <h3 class="text-center" *ngIf="isNotColombian">
+                                                    $ {{ totalPrice | number:'':'es'}}
+                                                </h3>
+
+
+                                                <h3 class="text-center" *ngIf="!isNotColombian"> $
+                                                    {{ totalPriceWithIva | number:'':'es'}}
+                                                </h3>
+
+                                            </div>
+
+
+
+
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck1"
+                                                    [(ngModel)]="isNotColombian">
+
+                                                <label class="custom-control-label custom-style-label"
+                                                    for="customCheck1">Soy
+                                                    extranjero</label>
+                                            </div>
+                                        </ng-container>
+                                    </div>
+                                </div>
+
+                                <ng-container *ngIf="roomsSelectedArray.length > 0">
+                                    <button class="btn btn-form1-submit mt-4" (click)="verifyRooms()"
+                                        matStepperNext>Siguiente</button>
+                                </ng-container>
+                            </div>
+                            <!------------------------------------------- Widget Lateral --------------------------------------------------->
+
+                        </div>
+                    </mat-step>
+                    <!---------------------------------FIRST STEPPER-------------------------------->
+
+                    <!-----------------------------------SECOND STEPPER---------------------------------->
+
+                    <mat-step>
+                        <ng-template matStepLabel>Revisión</ng-template>
+
+                        <div class="row">
+                            <div
+                                class="col-lg-6 col-md-6 col-sm-12 col-12 offset-lg-3 offset-md-3 row-reservations-selected">
+                                <div class="card w-100 mb-2">
+                                    <div class="card-header bg-custom-reservation">
+                                        {{ 'OURROOMSDISPONIBILITY.YOUR_STAY' | translate }}
+                                    </div>
+                                    <div class="card-body" *ngIf="informationHotel">
+                                        <h5>{{ informationHotel.name  }}</h5>
+                                        <h6 class="font-weight-custom">{{ informationHotel.commercialAddress  }}
+                                        </h6>
+                                        <h6 class="font-weight-custom" style="color: #FAB100;"> Llegada:
+                                            {{ routeCheckIn | date: 'mediumDate' }} - Salida:
+                                            {{ routeCheckOut | date: 'mediumDate' }}</h6>
+                                        <h6 class="text-danger" *ngIf="!isNotColombian"> Soy
+                                            colombiano</h6>
+                                        <h6 class="text-danger" *ngIf="isNotColombian"> Soy
+                                            extranjero</h6>
+                                        <ng-container *ngIf="roomsSelectedArray.length > 0">
+                                            <div *ngFor="let roomSelectedArray of roomsSelectedArray; let i=index">
+
+                                                <h5 class="card-title mt-2">
+                                                    {{ 'OURROOMSDISPONIBILITY.ACCOMMODATION_2' | translate }}
+                                                    {{ roomSelectedArray.informationRoomSelected.roomInformation.roomTypeHome.name }}
+                                                </h5>
+                                                <h6 class="card-subtitle mb-2 text-muted">
+                                                    {{ 'OURROOMSDISPONIBILITY.GUESTS' | translate }}:
+                                                    {{ roomSelectedArray.numberPersons }}</h6>
+                                                <h6 class="card-subtitle mb-2 text-muted" *ngIf="isNotColombian">
+                                                    {{ 'OURROOMSDISPONIBILITY.PRICE' | translate }}: $
+                                                    {{ (Math.ceil((roomSelectedArray.informationRoomSelected.roomInformation.pricePerNight.pricePerNightWithoutIva)) * dateDiff) | number:'':'es' }}
+                                                </h6>
+
+                                                <h6 class="card-subtitle mb-2 text-muted d-flex"
+                                                    *ngIf="!isNotColombian">
+                                                    {{ 'OURROOMSDISPONIBILITY.PRICE' | translate }}: $
+                                                    {{ (Math.ceil((roomSelectedArray.informationRoomSelected.roomInformation.pricePerNight.promoRate)) * dateDiff) | number:'':'es' }}
+                                                </h6>
+
+                                            </div>
+
+                                            <span class="badge badge-CC0000"
+                                                *ngIf="!isNotColombian && ivaHotel == 0">Excluido de
+                                                IVA</span>
+                                            <span class="badge badge-FF8800"
+                                                *ngIf="!isNotColombian && ivaHotel != 0">Con impuestos
+                                                incluídos</span>
+                                            <span class="badge badge badge-007E33" *ngIf="isNotColombian">Exento de
+                                                IVA</span>
+
+                                            <p class="text-center">
+                                                {{ 'OURROOMSDISPONIBILITY.PRICE_FOR' | translate }}
+                                                {{ totalGuest }}
+                                                {{ 'OURROOMSDISPONIBILITY.GUEST_CANT' | translate }},
+                                                {{ dateDiff }}
+                                                {{ 'OURROOMSDISPONIBILITY.NIGHT_CANT' | translate }}
+                                                {{ roomsSelectedArray.length }}
+                                                {{ 'OURROOMSDISPONIBILITY.ACCOMMODATION_CANT' | translate }}.
+                                            </p>
+
+                                            <div class="d-flex justify-content-center align-content-center">
+                                                <h3 class="text-center" *ngIf="isNotColombian"> $
+                                                    {{ totalPrice | number:'':'es'}}</h3>
+
+                                                <h3 class="text-center" *ngIf="!isNotColombian"> $
+                                                    {{ totalPriceWithIva | number:'':'es'}}
+                                                </h3>
+
+                                            </div>
+
+                                        </ng-container>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 offset-lg-3 offset-md-3">
+                                <div class="row">
+
+                                    <div
+                                        class="col-lg-6 col-md-6 col-sm-12 col-12 mb-lg-0 mb-xl-0 mb-xl-0 mb-sm-2 mb-2">
+                                        <button class="btn btn-form1-submit" matStepperPrevious>Atrás</button>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12" (click)="focusInput()">
+
+                                        <button class="btn btn-form1-submit mb-2" matStepperNext>Siguiente</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </mat-step>
+
+                    <!-----------------------------------SECOND STEPPER---------------------------------->
+                    <!------------------------THIRD STEPPER------------------------------->
+
+                    <mat-step>
+                        <ng-template matStepLabel>Finalizar</ng-template>
+                        <div class="row">
+                            <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12 mb-3">
+                                <div id="second-tab-group" class="tabgroup">
+                                    <div id="tabs2-2">
+                                        <form [formGroup]="reserveForm" (submit)="onFormSubmit(reserveForm.value)"
+                                            id="ajax-contact-form" #formDir="ngForm">
+                                            <!--focusInvalidInput-->
+                                            <div class="form-group">
+
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <h2>{{ 'OURROOMSDISPONIBILITY.PERSONAL_INFORMATION' | translate }}
+                                                        </h2>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                        <label for="customerFullname">Identificación
+                                                            <span class="text-danger">*</span></label>
+                                                        <div class="input-group mb-3">
+                                                            <div class="input-group-prepend">
+
+                                                                <ng-select id="identificationType" bindLabel="name"
+                                                                    bindValue="value" [items]="identificationTypeSelect"
+                                                                    formControlName="identificationType"
+                                                                    placeholder="Identificación"
+                                                                    notFoundText="No hay registros"
+                                                                    clearAllText="Clear">
+                                                                </ng-select>
+
+                                                            </div>
+                                                            <input name="identification" required="required"
+                                                                formControlName="identification" type="email"
+                                                                class="form-control" id="identification"
+                                                                aria-describedby="identification">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                        <label
+                                                            for="customerFullname">{{ 'OURROOMSDISPONIBILITY.FULL_NAME' | translate }}
+                                                            <span class="text-danger">*</span></label>
+                                                        <input name="customerFullname" required="required"
+                                                            formControlName="customerFullname" type="text"
+                                                            class="form-control" id="customerFullname"
+                                                            aria-describedby="customerFullname">
+                                                    </div>
+
+
+
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <div class="row">
+
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                        <label
+                                                            for="countryId">{{ 'OURROOMSDISPONIBILITY.COUNTRY' | translate }}
+                                                            <span class="text-danger">*</span></label>
+
+                                                        <ng-select [(ngModel)]="countryDefault" id="countryId"
+                                                            bindLabel="name" bindValue="countryId"
+                                                            [items]="countriesData" formControlName="countryId"
+                                                            placeholder="País" notFoundText="No hay registros"
+                                                            clearAllText="Clear">
+                                                        </ng-select>
+                                                    </div>
+
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                        <label
+                                                            for="customerEmail">{{ 'OURROOMSDISPONIBILITY.EMAIL' | translate }}
+                                                            <span class="text-danger">*</span></label>
+                                                        <input name="customerEmail" required="required"
+                                                            formControlName="customerEmail" type="email"
+                                                            class="form-control" id="customerEmail"
+                                                            aria-describedby="customerEmail">
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <div class="row">
+
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                        <label for="customerEmailVerified">Verifica el correo
+                                                            electrónico
+                                                            <span class="text-danger">*</span></label>
+                                                        <input name="customerEmail" required="required"
+                                                            formControlName="customerEmailVerified" type="email"
+                                                            class="form-control" id="customerEmailVerified"
+                                                            aria-describedby="customerEmailVerified">
+                                                    </div>
+
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                        <label
+                                                            for="customerPhone">{{ 'OURROOMSDISPONIBILITY.CELLPHONE' | translate }}
+                                                            <span class="text-danger">*</span></label>
+
+                                                        <div class="input-group mb-3">
+                                                            <div class="input-group-prepend">
+
+
+                                                                <ng-select id="countriesInformation"
+                                                                    bindLabel="callingCodes" bindValue="callingCodes"
+                                                                    [items]="countriesSelect"
+                                                                    name="countryInformationDefault"
+                                                                    placeholder="Código país"
+                                                                    formControlName="countryInformationDefault"
+                                                                    clearAllText="Clear">
+
+                                                                    <ng-template ng-label-tmp let-item="item">
+                                                                        (+{{ item.callingCodes }})
+                                                                    </ng-template>
+
+
+                                                                    <ng-template ng-option-tmp let-item="item"
+                                                                        let-index="index" let-search="searchTerm">
+                                                                        <img height="15" width="15" [src]="item.flag" />
+                                                                        (+{{ item.callingCodes }})
+                                                                    </ng-template>
+
+
+                                                                </ng-select>
+
+                                                            </div>
+                                                            <input name="customerCellPhone" required="required"
+                                                                formControlName="customerCellPhone" type="text"
+                                                                class="form-control" id="customerCellPhone"
+                                                                aria-describedby="customerCellPhone">
+                                                        </div>
+
+
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="row">
+
+                                                    <div
+                                                        class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 text-center">
+                                                        <div class="custom-switch">
+                                                            <input class="custom-switch-input"
+                                                                id="custom-empress-switch" type="checkbox"
+                                                                formControlName="empressSwitch" name="empressSwitch"
+                                                                name="empressSwitch" (change)="verifyEmpress()">
+                                                            <label class="custom-switch-btn"
+                                                                for="custom-empress-switch"></label>
+                                                            <div class="custom-switch-content-checked mt-2">
+                                                                Facturar a nombre de una empresa
+                                                            </div>
+                                                            <div class="custom-switch-content-unchecked mt-2">
+                                                                Facturar a nombre de una persona
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+
+                                            <!----------------------------------------EMPRESS------------------------------->
+
+
+                                            <div class="form-group" *ngIf="reserveForm.value.empressSwitch">
+                                                <div class="row">
+
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                        <label for="customerFullname">Nombre de la empresa
+                                                            <span class="text-danger">*</span></label>
+                                                        <input name="customerEmpressName"
+                                                            formControlName="customerEmpressName" type="text"
+                                                            class="form-control" id="customerEmpressName"
+                                                            aria-describedby="customerEmpressName">
+                                                    </div>
+
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                        <!--formControlName="identificationType"-->
+
+                                                        <label for="customerFullname">Identificación de la
+                                                            empresa
+                                                            <span class="text-danger">*</span></label>
+                                                        <div class="input-group mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <select class="form-control">
+                                                                    <option value="5">NIT</option>
+                                                                </select>
+                                                            </div>
+                                                            <input name="customerEmpressNit"
+                                                                formControlName="customerEmpressNit" type="email"
+                                                                class="form-control" id="customerEmpressNit"
+                                                                aria-describedby="customerEmpressNit">
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <!----------------------------------------EMPRESS------------------------------->
+
+
+
+
+                                            <div class="form-group">
+                                                <div class="row">
+
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <div class="custom-control custom-checkbox">
+                                                                        <input type="checkbox"
+                                                                            class="custom-control-input"
+                                                                            id="customCheckTerms" name="policityTerms"
+                                                                            formControlName="policityTerms"
+                                                                            (change)="openModalConditionsTerms('policityTerms', $event)">
+                                                                        <label
+                                                                            class="custom-control-label custom-label-reservation custom-style-label"
+                                                                            for="customCheckTerms"
+                                                                            ngbTooltip="Ver">Acepto los
+                                                                            términos & condiciones <i
+                                                                                class="fa fa-exclamation-circle pink-color-icon"></i></label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+
+
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <div class="custom-control custom-checkbox">
+                                                                        <input type="checkbox"
+                                                                            class="custom-control-input"
+                                                                            id="customCheckTreatment"
+                                                                            name="dataTreatment"
+                                                                            formControlName="dataTreatment"
+                                                                            (change)="openModalConditionsTerms('dataTreatment', $event)">
+                                                                        <label
+                                                                            class="custom-control-label custom-label-reservation custom-style-label"
+                                                                            for="customCheckTreatment"
+                                                                            ngbTooltip="Ver">Acepto la
+                                                                            política de tratamiento de
+                                                                            datos <i
+                                                                                class="fa fa-exclamation-circle pink-color-icon"></i></label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <label
+                                                            for="notes">{{ 'OURROOMSDISPONIBILITY.COMMENTS_2' | translate }}</label>
+                                                        <textarea name="notes" formControlName="notes"
+                                                            class="form-control" id="notes" rows="3"></textarea>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row">
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 text-center">
+
+                                                    <button type="button" matStepperPrevious
+                                                        class="btn btn-default btn-cf-submit btn-submit-reservation float-lg-left float-md-left float-sm-left float-none">{{ 'OURROOMSDISPONIBILITY.BACK' | translate }}</button>
+                                                </div>
+
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 text-center">
+
+                                                    <button type="submit"
+                                                        class="btn btn-default btn-cf-submit btn-submit-reservation float-lg-right float-md-right float-sm-right float-none">{{ 'OURROOMSDISPONIBILITY.CONFIRM' | translate }}</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-12 col-12 ">
+                                <div class="card w-100 mb-2">
+                                    <div class="card-header bg-custom-reservation">
+                                        {{ 'OURROOMSDISPONIBILITY.YOUR_STAY' | translate }}
+                                    </div>
+                                    <div class="card-body" *ngIf="informationHotel">
+                                        <h5>{{ informationHotel.name  }}</h5>
+                                        <h6 class="font-weight-custom">{{ informationHotel.commercialAddress  }}
+                                        </h6>
+                                        <h6 class="font-weight-custom">(+57) {{ informationHotel.cellPhone  }}
+                                        </h6>
+
+                                        <p style="color: #FAB100;"> Llegada:
+                                            {{ routeCheckIn | date: 'mediumDate' }} - Salida:
+                                            {{ routeCheckOut | date: 'mediumDate' }}</p>
+
+                                        <ng-container *ngIf="roomsSelectedArray.length > 0">
+                                            <div *ngFor="let roomSelectedArray of roomsSelectedArray; let i=index">
+
+                                                <h5 class="card-title mt-2">
+                                                    {{ 'OURROOMSDISPONIBILITY.ACCOMMODATION_2' | translate }}
+                                                    {{ roomSelectedArray.informationRoomSelected.roomInformation.roomTypeHome.name }}
+                                                </h5>
+                                                <h6 class="card-subtitle mb-2 text-muted">
+                                                    {{ 'OURROOMSDISPONIBILITY.GUESTS' | translate }}:
+                                                    {{ roomSelectedArray.numberPersons }}</h6>
+
+
+                                                <h6 class="card-subtitle mb-2 text-muted" *ngIf="isNotColombian">
+                                                    {{ 'OURROOMSDISPONIBILITY.PRICE' | translate }}: $
+                                                    {{ (Math.ceil((roomSelectedArray.informationRoomSelected.roomInformation.pricePerNight.pricePerNightWithoutIva)) * dateDiff) | number:'':'es' }}
+                                                </h6>
+
+                                                <h6 class="card-subtitle mb-2 text-muted d-flex"
+                                                    *ngIf="!isNotColombian">
+                                                    {{ 'OURROOMSDISPONIBILITY.PRICE' | translate }}: $
+                                                    {{ (Math.ceil((roomSelectedArray.informationRoomSelected.roomInformation.pricePerNight.promoRate)) * dateDiff) | number:'':'es' }}
+                                                </h6>
+                                            </div>
+
+                                            <span class="badge badge-CC0000"
+                                                *ngIf="!isNotColombian && ivaHotel == 0">Excluido de
+                                                IVA</span>
+                                            <span class="badge badge-FF8800"
+                                                *ngIf="!isNotColombian && ivaHotel != 0">Con impuestos
+                                                incluídos</span>
+                                            <span class="badge badge badge-007E33" *ngIf="isNotColombian">Exento de
+                                                IVA</span>
+
+
+                                            <p class="text-center">
+                                                {{ 'OURROOMSDISPONIBILITY.PRICE_FOR' | translate }}
+                                                {{ totalGuest }}
+                                                {{ 'OURROOMSDISPONIBILITY.GUEST_CANT' | translate }},
+                                                {{ dateDiff }}
+                                                {{ 'OURROOMSDISPONIBILITY.NIGHT_CANT' | translate }}
+                                                {{ roomsSelectedArray.length }}
+                                                {{ 'OURROOMSDISPONIBILITY.ACCOMMODATION_CANT' | translate }}.
+                                            </p>
+
+
+                                            <div class="d-flex justify-content-center align-content-center">
+                                                <h3 class="text-center" *ngIf="!isNotColombian"> $
+                                                    {{ totalPriceWithIva | number:'':'es'}}
+                                                </h3>
+
+                                                <h3 class="text-center" *ngIf="isNotColombian"> $
+                                                    {{ totalPrice | number:'':'es'}} </h3>
+
+                                            </div>
+
+                                            <h6 class="text-danger font-weight-bold text-center"
+                                                *ngIf="!isNotColombian"> Soy colombiano</h6>
+                                            <h6 class="text-danger font-weight-bold text-center" *ngIf="isNotColombian">
+                                                Soy extranjero</h6>
+                                        </ng-container>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </mat-step>
+                    <!------------------------THIRD STEPPER------------------------------->
+
+                </mat-horizontal-stepper>
+
+                <!--------------STEPPER----------------------->
+
+            </div>
+        </div>
+
+        <app-footer *ngIf="establismentInformation" [establismentInformation]="establismentInformation"></app-footer>
+
+
+    </div>
+</div>
+<ngx-loading [show]="loading" [config]="{fullScreenBackdrop: true }"></ngx-loading>

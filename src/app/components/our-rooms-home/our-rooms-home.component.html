@@ -1,0 +1,127 @@
+<div id="rooms">
+    <ng-container *ngIf="informationsOurRoomSection?.length > 0">
+        <div class="container">
+
+            <div class="title1">{{ 'HOME.OURROOMS.OUR_ROOMS' | translate }}</div>
+
+            <div class="row">
+
+                <div class="col-12 d-xl-none d-lg-none- d-md-block d-sm-block d-block">
+                    <owl-carousel-o [options]="customOptions" class="owl-carousel-about-home">
+
+                        <ng-container *ngFor="let informationOurRoomSection of informationsOurRoomSection">
+                            <ng-template carouselSlide [id]="informationOurRoomSection.roomTypeHome.id">
+                                <div class="room-wrapper" *ngIf="informationOurRoomSection.pricePerNight">
+                                    <div class="room-inner">
+                                        <div class="room">
+                                            <figure class="figure-img">
+                                                <img src="{{server + informationOurRoomSection.roomTypeHome.urlImage}}"
+                                                    alt="Imagen de la Acomodación">
+                                            </figure>
+                                            <div class="caption">
+                                                <div class="txt1 font-weight-bold">
+                                                    {{ informationOurRoomSection.roomTypeHome.name  }}</div>
+                                                <app-read-more [extendsOptions]="true"
+                                                    [text]="informationOurRoomSection.roomTypeHome.description">
+                                                </app-read-more>
+
+                                            </div>
+                                            <div class="select-txt">
+                                                <a
+                                                    [routerLink]="['/' + establismentInformation.token + '/details-rooms', informationOurRoomSection.roomTypeHome.id]"><span>{{ 'HOME.OURROOMS.SELECT' | translate }}<i
+                                                            class="fa fa-angle-right" aria-hidden="true"></i></span></a>
+                                            </div>
+                                            <div class="room-icons">
+                                                <div class="room-ic room-ic-wifi"
+                                                    *ngFor="let item of informationOurRoomSection.roomTypeHome.items | slice:0:4">
+                                                    <i class="{{ item.icon }}" aria-hidden="true"></i>
+                                                    <div class="txt1">{{ item.title }}</div>
+                                                </div>
+
+                                                <div class="room-price">
+
+                                                    <div class="text-info-price">Desde
+                                                    </div>
+                                                    <div class="txt1">
+                                                        $<span>{{ informationOurRoomSection.pricePerNight.pricePerNightWithoutIva | number:'':'es'}}</span>
+                                                    </div>
+                                                    <div class="text-info-price d-flex" style="align-items: center;">
+                                                        {{ 'HOME.OURROOMS.PER_NIGHT' | translate }}
+                                                        <i style="margin-left: 2px;"
+                                                            class="fa fa-info-circle icon-info-price pink-color-icon"
+                                                            container="body" aria-hidden="true"
+                                                            ngbTooltip="{{ messageTooltip }}"></i>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </ng-container>
+
+                    </owl-carousel-o>
+                </div>
+
+
+
+                <div class="col-lg-4 d-xl-block d-lg-block- d-md-none d-sm-none d-none"
+                    *ngFor="let informationOurRoomSection of informationsOurRoomSection">
+
+                    <div class="room-wrapper" *ngIf="informationOurRoomSection.pricePerNight">
+                        <div class="room-inner">
+                            <div class="room">
+                                <figure class="figure-img">
+                                    <img src="{{server + informationOurRoomSection.roomTypeHome.urlImage}}"
+                                        alt="Imagen de la Acomodación">
+                                </figure>
+                                <div class="caption">
+                                    <div class="txt1 font-weight-bold">
+                                        {{ informationOurRoomSection.roomTypeHome.name  }}
+                                    </div>
+
+
+                                    <span *ngIf="informationOurRoomSection.pricePerNight.iva == 0" class="badge text-white badge-CC0000">
+                                        Excluido de IVA
+                                    </span>
+
+                                    <span class="badge text-white badge-FF8800" *ngIf="informationOurRoomSection.pricePerNight.iva != 0">
+                                        Con impuestos incluídos
+                                    </span>
+
+
+                                    <app-read-more [extendsOptions]="true"
+                                        [text]="informationOurRoomSection.roomTypeHome.description"></app-read-more>
+
+                                </div>
+                                <div class="select-txt">
+                                    <a
+                                        [routerLink]="['/' + establismentInformation.token + '/details-rooms', informationOurRoomSection.roomTypeHome.id]"><span>{{ 'HOME.OURROOMS.SELECT' | translate }}<i
+                                                class="fa fa-angle-right" aria-hidden="true"></i></span></a>
+                                </div>
+                                <div class="room-icons">
+                                    <div class="room-ic room-ic-wifi"
+                                        *ngFor="let item of informationOurRoomSection.roomTypeHome.items | slice:0:4">
+                                        <i class="{{ item.icon }}" aria-hidden="true"></i>
+                                        <div class="txt1">{{ item.title }}</div>
+                                    </div>
+
+                                    <div class="room-price">
+
+                                        <div class="text-info-price">Desde
+                                        </div>
+                                        <div class="txt1">
+                                            $<span>{{ Math.ceil(informationOurRoomSection.pricePerNight.pricePerNightWithoutIva) | number:'':'es'}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </ng-container>
+</div>

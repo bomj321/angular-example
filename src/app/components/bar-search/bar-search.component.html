@@ -1,0 +1,46 @@
+<div class="container fade-in-8">
+    <div class="booking-inner clearfix">
+        <form class="form1 clearfix" (submit)="onFormSubmit($event)">
+            <div class="col3 c1">
+                <div class="input1_wrapper">
+                    <label> Fechas</label>
+                    <div class="input1_inner">
+                        <input type="text" class="form-control input datepicker" id="checkIn" placeholder="Fechas"
+                            autocomplete="off">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col3 c3">
+                <div class="select1_wrapper">
+                    <label>{{ 'HOME.BARSEARCH.ADULTS' | translate }}</label>
+                    <select class="form-control select-custom" name="numberGuests" id="numberGuests"  [(ngModel)]="numberGuests">
+                        <option value="1" class="p-2">1 {{ 'HOME.BARSEARCH.ADULT' | translate }}</option>
+                        <option value="2" class="p-2">2 {{ 'HOME.BARSEARCH.ADULTS'  | translate }}</option>
+                        <option value="3" class="p-2">3 {{ 'HOME.BARSEARCH.ADULTS' | translate }}</option>
+                        <option value="4" class="p-2">4 {{ 'HOME.BARSEARCH.ADULTS' | translate }}</option>
+                        <option value="5" class="p-2">5 {{ 'HOME.BARSEARCH.ADULTS' | translate }}</option>                  
+                    </select>
+                
+                </div>
+            </div>
+
+            <div class="col3 c4">
+                <div class="input1_wrapper">
+                    <label>Código promocional</label>
+                    <div class="input1_inner_custom">
+                        <input type="text" class="form-control input" id="promotionCode" placeholder="Código promocional"  style="height: 65px;" name="promotionCode" [(ngModel)]="promotionCode">
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <div class="col3 c6">
+                <button type="submit" class="btn-form1-submit">{{ 'HOME.BARSEARCH.RESERVE' | translate }}</button>
+            </div>
+        </form>
+    </div>
+</div>
+<ngx-loading [show]="loading" [config]="{fullScreenBackdrop: true }"></ngx-loading>

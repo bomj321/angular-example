@@ -1,0 +1,59 @@
+<ng-container *ngIf="!loading">
+
+  <div class="modal-header bg-danger">
+    <h4 class="modal-title text-white font-weight-bold">Gestión de pago</h4>
+  </div>
+
+  <div class="modal-body">
+    <div class="container" *ngIf="pay">
+      <div class="row">
+        <div class="col-12">
+          <div class="text-justify" style="margin-top: 5%; margin-bottom: 5%;">
+
+            <div id="afrus-container-form" data-form="Zm9ybS0yMjEtb3JnYW5pemF0aW9uLTgy" [attr.data-amount]="totalPrice"
+              [attr.data-order]="rnt+'-'+preservationId" [attr.data-hotel]="affiliateId" [attr.data-hotel-name]="hotel"
+              [attr.data-rnt]="rnt">
+
+              <div id="id-spinner" class="text-center" style="margin-top: 15%; margin-bottom: 15%;">
+                <i style="font-size: 70px;" class="fa fa-spin fa-spinner"></i>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container text-center" *ngIf="!pay">
+      <i class="fa fa-check text-success" style="font-size: 8rem;" aria-hidden="true"></i>
+
+      <h3 class="text-center"><strong>Reservado</strong></h3>
+      <p class="text-center">Tu número de reserva es:</p>
+      <p class="text-center">{{preservationId}}</p>
+      <p class="text-center">Por favor anótalo y sigue reservando</p>
+
+      <hr>
+      <p class="text-center">Falta un último paso: para garantizar
+        su alojamiento,
+        realiza el pago a través de nuestra pasarela y con ello, asegura su habitación y el precio que
+        acaba de obtener.</p>
+    </div>
+  </div>
+
+  <div class="modal-footer justify-content-center">
+    <button *ngIf="!pay" type="button" class="btn btn-primary" (click)="paymentAccept()">Pagar</button>
+    <button type="button" class="btn btn-danger" (click)="close()">Cerrar</button>
+  </div>
+
+</ng-container>
+
+
+
+<div class="row" *ngIf="loading">
+  <div class="col-12">
+    <div class="text-center" style="margin-top: 15%; margin-bottom: 15%;">
+      <i style="font-size: 50px;" class="fa fa-spin fa-spinner"></i>
+    </div>
+  </div>
+</div>

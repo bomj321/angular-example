@@ -1,0 +1,170 @@
+<div class="not-front page-details" *ngIf="informationDestinoData && establismentInformation">
+  <div id="main">
+
+    <app-search-wrapper [establismentInformation]="establismentInformation"></app-search-wrapper>
+
+
+    <app-top-wrapper-home [establismentInformation]="establismentInformation"></app-top-wrapper-home>
+
+    <div class="breadcrumbs1_wrapper mt-3">
+      <div class="container">
+
+
+        <div class="breadcrumbs1"><a
+            [routerLink]="'/' + establismentInformation.token">{{ 'DESTINATION.HOME' | translate }}</a><span>|</span>{{ 'DESTINATION.DETAILS' | translate }}
+        </div>
+      </div>
+    </div>
+    <div id="content">
+      <div class="container">
+
+        <div class="title1">{{ 'DESTINATION.DESTINATIONS_DETAILS' | translate }}</div>
+
+        <div class="title2">Detalles del destino</div>
+
+        <ng-container *ngIf="galleryImages?.length > 0">
+          <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+        </ng-container>
+
+        <p class="pointer font-weight-bold">#{{ informationDestinoData.hashtag }}</p>
+
+
+        <div class="details-wrapper clearfix">
+          <div class="txt1">
+
+
+          </div>
+          <div class="txt2">{{ informationDestinoData.name }}</div>
+          <div>
+
+
+            <div class="mb-3" [innerHtml]="informationDestinoData.summary"></div>
+            <div [innerHtml]="informationDestinoData.description"></div>
+
+
+            <!---------------ADITIONAL INFORMATION--------------------------->
+
+            <div class="tracking-in-expand-fwd hover-general" *ngIf="informationDestinoData.howToGo != null">
+              <h4>¿Cómo llegar?</h4>
+              <div [innerHtml]="informationDestinoData.howToGo"></div>
+              <hr>
+            </div>
+
+
+
+
+            <div class="tracking-in-expand-fwd hover-general" *ngIf="informationDestinoData.organizeTrip != null">
+              <h4>Recomendaciones para organizar el viaje</h4>
+              <div [innerHtml]="informationDestinoData.organizeTrip"></div>
+              <hr>
+            </div>
+
+
+            <div class="tracking-in-expand-fwd hover-general" *ngIf="informationDestinoData.prices != null">
+              <h4>Precios</h4>
+              <div [innerHtml]="informationDestinoData.prices"></div>
+              <hr>
+            </div>
+
+
+            <div class="tracking-in-expand-fwd hover-general" *ngIf="informationDestinoData.shopping != null">
+              <h4>Compras</h4>
+              <div [innerHtml]="informationDestinoData.shopping"></div>
+              <hr>
+            </div>
+
+
+            <div class="tracking-in-expand-fwd hover-general" *ngIf="informationDestinoData.sites != null">
+              <h4>Sitios</h4>
+              <div [innerHtml]="informationDestinoData.sites"></div>
+              <hr>
+            </div>
+
+
+            <ng-container *ngIf="informationDestinoData.places != null && informationDestinoData.places.length == 1">
+            <div class="row" style="overflow: hidden; cursor: pointer;">
+              <div class="col-12 p-0">
+                <div class="p-0 div-information-destiny" (click)="openModalPlace(informationDestinoData.places[0])">
+                  <div class="div-information-one d-xl-block d-lg-block d-md-block d-sm-none d-none">
+                    <h5 class="text-white font-weight-bold">#{{ informationDestinoData.places[0].hashtag }}</h5>
+                    <p class="text-white"> <i class="fa fa-map-marker mr-1"></i> {{ informationDestinoData.places[0].address }}</p>
+                  </div>
+                  <img src="{{ server + informationDestinoData.places[0].urlImage }}" alt="{{ informationDestinoData.places[0].name }}" class="w-100">
+                </div>
+              </div>
+            </div>
+            </ng-container>
+
+            
+
+            <ng-container *ngIf="informationDestinoData.places != null && informationDestinoData.places.length > 1">
+
+              <div class="tracking-in-expand-fwd hover-general"
+                *ngIf="informationDestinoData.places != null && informationDestinoData.places.length > 0">
+                <div class="row">
+                  <div class="col-12">
+                    <owl-carousel-o [options]="customOptions" class="owl-carousel-destiny">
+
+                      <ng-container *ngFor="let place of informationDestinoData.places">
+                        <ng-template carouselSlide [id]="place.placeId">
+
+                          <div class="p-3 div-information-destiny" (click)="openModalPlace(place)">
+                            <div class="div-information d-xl-block d-lg-block d-md-block d-sm-none d-none">
+                              <h5 class="text-white font-weight-bold">#{{ place.hashtag }}</h5>
+                              <p class="text-white"> <i class="fa fa-map-marker mr-1"></i> {{ place.address }}</p>
+                            </div>
+                            <img src="{{ server + place.urlImage }}" alt="{{ place.name }}" class="w-100">
+                          </div>
+
+
+                        </ng-template>
+                      </ng-container>
+
+                    </owl-carousel-o>
+                  </div>
+                </div>
+              </div>
+
+            </ng-container>
+
+
+            <div class="tracking-in-expand-fwd hover-general" *ngIf="informationDestinoData.transport != null">
+              <h4>Transporte</h4>
+              <div [innerHtml]="informationDestinoData.transport"></div>
+              <hr>
+            </div>
+
+
+            <div class="tracking-in-expand-fwd hover-general" *ngIf="informationDestinoData.whatToSee != null">
+              <h4>¿Qúe ver?</h4>
+              <div [innerHtml]="informationDestinoData.whatToSee"></div>
+              <hr>
+            </div>
+
+
+            <div class="tracking-in-expand-fwd hover-general" *ngIf="informationDestinoData.whereToEat != null">
+              <h4>Opciones de gastronomía</h4>
+              <div [innerHtml]="informationDestinoData.whereToEat"></div>
+              <hr>
+            </div>
+
+
+            <div class="tracking-in-expand-fwd hover-general" *ngIf="informationDestinoData.whyVisit != null">
+              <h4>¿Por qué visitar?</h4>
+              <div [innerHtml]="informationDestinoData.whyVisit"></div>
+            </div>
+
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <app-footer [establismentInformation]="establismentInformation"></app-footer>
+
+  </div>
+</div>
+
+<ngx-loading [show]="loading" [config]="{fullScreenBackdrop: true }"></ngx-loading>

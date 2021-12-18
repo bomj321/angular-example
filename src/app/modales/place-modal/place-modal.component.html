@@ -1,0 +1,28 @@
+<div class="modal-header bg-orange">
+    <h4 class="modal-title text-white font-weight-bold">{{ title }}</h4>
+  </div>
+
+  <div class="modal-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-justify">
+
+          <img class="mb-2" src="{{ server + place.urlImage}}" height="250" width="100%">
+
+          <div [innerHTML]="place.description"></div>
+
+          <h4 class="text-center">Información básica</h4>
+          <p *ngIf="place.prices && place.prices != 0" class="mb-0"><i class="fa fa-usd mr-1"></i> ${{ place.prices | number:'':'es' }}</p>
+          <p *ngIf="place.prices && place.prices == 0" class="mb-0 text-danger font-weight-bold">Acceso gratuito </p>
+          <p *ngIf="place.address" class="mb-0"><i class="fa fa-map-marker mr-1"></i> {{ place.address }}</p>
+          <p *ngIf="place.placeType != null && place.placeType != 'undefined'" class="mb-0"><i class="fa fa-map mr-1"></i> {{ place.placeType == 0 ? 'Cultural' : place.placeType == 1 ? 'Recreativo' : place.placeType == 2 ? 'Diversión' : place.placeType == 3 ? 'Gubernamental' : place.placeType == 4 ? 'Servicios' : 'No definido' }}</p>        
+          <p *ngIf="place.transport" class="mb-0"><i class="fa fa-car mr-1"></i> {{ place.transport }}</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer justify-content-center">
+    <button type="button" class="btn btn-danger" (click)="close()">Cerrar</button>
+  </div>
